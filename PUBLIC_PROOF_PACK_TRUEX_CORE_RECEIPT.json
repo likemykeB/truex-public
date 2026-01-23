@@ -1,0 +1,9 @@
+﻿{
+    "status":  "OK",
+    "timestamp_utc":  "2026-01-22T22:44:47.5613227Z",
+    "root":  "C:\\TRUEX",
+    "zip_sha256":  "7B93426C7A05979A119B32EC6B31637714168EC92FC5D3504C04DF8825334525",
+    "phase3_run_dir":  "C:\\TRUEX\\presentation_out\\runs\\20260122_121417",
+    "zip_path":  "C:\\TRUEX\\presentation_out\\latest\\PUBLIC_PROOF_PACK_TRUEX_CORE.zip",
+    "strategy_id":  "TRUEX_CORE"
+}

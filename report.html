@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>TRUEX Phase 3 Presentation</title>
+</head>
+<body>
+  <h1>TRUEX — Phase 3 Presentation (Read-Only)</h1>
+
+  <h2>1. Executive Snapshot</h2>
+  <ul>
+    <li><b>Sharpe-like</b>: 0.25755841670164964</li><li><b>Max drawdown (units)</b>: -1.0</li><li><b>Profit mean</b>: 0.2871573</li><li><b>Profit CI 95%</b>: [-0.9744946362586233, 1.5488092362586234]</li><li><b>Worst leakage group (by ROI)</b>: NFL|spread|MID_6H_24H|MyBookie|away</li><li><b>Worst leakage group (by Avg CLV)</b>: NFL|spread|LATE_1H_6H|MyBookie|home</li><li><b>CLV plot data</b>: line_valid_n=3, line_skipped=0, odds_valid_n=3, odds_skipped=0, odds_all_missing=False</li>
+  </ul>
+
+  <h2>2. Equity &amp; Drawdown</h2>
+  <img src="charts/equity_curve.png" alt="equity_curve" style="max-width:100%;"/><br/>
+  <img src="charts/drawdown_curve.png" alt="drawdown_curve" style="max-width:100%;"/>
+
+  <h2>3. Risk Snapshot</h2>
+  <table border="1" cellpadding="6" cellspacing="0">
+  <thead><tr><th>group_key</th><th>profit_mean</th><th>profit_std</th><th>sharpe_like</th><th>max_drawdown_units</th><th>profit_ci_95_lo</th><th>profit_ci_95_hi</th></tr></thead>
+  <tbody>
+    <tr><td>ALL</td><td>0.2871573</td><td>1.1149210485038705</td><td>0.25755841670164964</td><td>-1.0</td><td>-0.9744946362586233</td><td>1.5488092362586234</td></tr>
+  </tbody>
+</table>
+
+  <h2>4. Leakage: Where Edge Dies</h2>
+  <h3>Worst ROI per Unit</h3>
+  <table border="1" cellpadding="6" cellspacing="0">
+  <thead><tr><th>group_key</th><th>n_bets</th><th>units_won</th><th>units_risked</th><th>roi_per_unit</th><th>avg_clv</th><th>median_clv</th><th>clv_hit_rate</th><th>max_drawdown_units</th><th>profit_mean</th><th>profit_std</th><th>sharpe_like</th><th>flag_reason</th></tr></thead>
+  <tbody>
+    <tr><td>NFL|spread|MID_6H_24H|MyBookie|away</td><td>1</td><td>-1.0</td><td>1.0</td><td>-1.0</td><td>-0.5</td><td>-0.5</td><td>0.0</td><td>-1.0</td><td>0.2871573</td><td>1.1149210485038705</td><td>0.25755841670164964</td><td></td></tr><tr><td>NFL|spread|LATE_1H_6H|MyBookie|home</td><td>1</td><td>0.9090909</td><td>1.0</td><td>0.9090909</td><td>-0.5</td><td>-0.5</td><td>0.0</td><td>-1.0</td><td>0.2871573</td><td>1.1149210485038705</td><td>0.25755841670164964</td><td></td></tr><tr><td>NBA|total|MID_6H_24H|MyBookie|over</td><td>1</td><td>0.952381</td><td>1.0</td><td>0.952381</td><td>0.5</td><td>0.5</td><td>1.0</td><td>-1.0</td><td>0.2871573</td><td>1.1149210485038705</td><td>0.25755841670164964</td><td></td></tr>
+  </tbody>
+</table>
+  <h3>Worst Avg CLV</h3>
+  <table border="1" cellpadding="6" cellspacing="0">
+  <thead><tr><th>group_key</th><th>n_bets</th><th>units_won</th><th>units_risked</th><th>roi_per_unit</th><th>avg_clv</th><th>median_clv</th><th>clv_hit_rate</th><th>max_drawdown_units</th><th>profit_mean</th><th>profit_std</th><th>sharpe_like</th><th>flag_reason</th></tr></thead>
+  <tbody>
+    <tr><td>NFL|spread|LATE_1H_6H|MyBookie|home</td><td>1</td><td>0.9090909</td><td>1.0</td><td>0.9090909</td><td>-0.5</td><td>-0.5</td><td>0.0</td><td>-1.0</td><td>0.2871573</td><td>1.1149210485038705</td><td>0.25755841670164964</td><td></td></tr><tr><td>NFL|spread|MID_6H_24H|MyBookie|away</td><td>1</td><td>-1.0</td><td>1.0</td><td>-1.0</td><td>-0.5</td><td>-0.5</td><td>0.0</td><td>-1.0</td><td>0.2871573</td><td>1.1149210485038705</td><td>0.25755841670164964</td><td></td></tr><tr><td>NBA|total|MID_6H_24H|MyBookie|over</td><td>1</td><td>0.952381</td><td>1.0</td><td>0.952381</td><td>0.5</td><td>0.5</td><td>1.0</td><td>-1.0</td><td>0.2871573</td><td>1.1149210485038705</td><td>0.25755841670164964</td><td></td></tr>
+  </tbody>
+</table>
+  <h3>Flag Reasons</h3>
+  <table border="1" cellpadding="6" cellspacing="0">
+  <thead><tr><th>group_key</th><th>n_bets</th><th>units_won</th><th>units_risked</th><th>roi_per_unit</th><th>avg_clv</th><th>median_clv</th><th>clv_hit_rate</th><th>max_drawdown_units</th><th>profit_mean</th><th>profit_std</th><th>sharpe_like</th><th>flag_reason</th></tr></thead>
+  <tbody>
+    
+  </tbody>
+</table>
+
+  <h2>5. Performance Splits</h2>
+  <h3>Top ROI per Unit</h3>
+  <table border="1" cellpadding="6" cellspacing="0">
+  <thead><tr><th>group_key</th><th>n_bets</th><th>n_w</th><th>n_l</th><th>n_p</th><th>win_rate_decided</th><th>units_won</th><th>units_risked</th><th>roi_per_unit</th><th>avg_clv</th><th>median_clv</th><th>clv_hit_rate</th><th>avg_odds</th></tr></thead>
+  <tbody>
+    <tr><td>NBA|total|MID_6H_24H|MyBookie|over</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1.0</td><td>0.952381</td><td>1.0</td><td>0.952381</td><td>0.5</td><td>0.5</td><td>1.0</td><td>-105.0</td></tr><tr><td>NFL|spread|LATE_1H_6H|MyBookie|home</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1.0</td><td>0.9090909</td><td>1.0</td><td>0.9090909</td><td>-0.5</td><td>-0.5</td><td>0.0</td><td>-110.0</td></tr><tr><td>NFL|spread|MID_6H_24H|MyBookie|away</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0.0</td><td>-1.0</td><td>1.0</td><td>-1.0</td><td>-0.5</td><td>-0.5</td><td>0.0</td><td>-110.0</td></tr>
+  </tbody>
+</table>
+  <h3>Bottom ROI per Unit</h3>
+  <table border="1" cellpadding="6" cellspacing="0">
+  <thead><tr><th>group_key</th><th>n_bets</th><th>n_w</th><th>n_l</th><th>n_p</th><th>win_rate_decided</th><th>units_won</th><th>units_risked</th><th>roi_per_unit</th><th>avg_clv</th><th>median_clv</th><th>clv_hit_rate</th><th>avg_odds</th></tr></thead>
+  <tbody>
+    <tr><td>NFL|spread|MID_6H_24H|MyBookie|away</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0.0</td><td>-1.0</td><td>1.0</td><td>-1.0</td><td>-0.5</td><td>-0.5</td><td>0.0</td><td>-110.0</td></tr><tr><td>NFL|spread|LATE_1H_6H|MyBookie|home</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1.0</td><td>0.9090909</td><td>1.0</td><td>0.9090909</td><td>-0.5</td><td>-0.5</td><td>0.0</td><td>-110.0</td></tr><tr><td>NBA|total|MID_6H_24H|MyBookie|over</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1.0</td><td>0.952381</td><td>1.0</td><td>0.952381</td><td>0.5</td><td>0.5</td><td>1.0</td><td>-105.0</td></tr>
+  </tbody>
+</table>
+  <h3>Bottom Avg CLV</h3>
+  <table border="1" cellpadding="6" cellspacing="0">
+  <thead><tr><th>group_key</th><th>n_bets</th><th>n_w</th><th>n_l</th><th>n_p</th><th>win_rate_decided</th><th>units_won</th><th>units_risked</th><th>roi_per_unit</th><th>avg_clv</th><th>median_clv</th><th>clv_hit_rate</th><th>avg_odds</th></tr></thead>
+  <tbody>
+    <tr><td>NFL|spread|LATE_1H_6H|MyBookie|home</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1.0</td><td>0.9090909</td><td>1.0</td><td>0.9090909</td><td>-0.5</td><td>-0.5</td><td>0.0</td><td>-110.0</td></tr><tr><td>NFL|spread|MID_6H_24H|MyBookie|away</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0.0</td><td>-1.0</td><td>1.0</td><td>-1.0</td><td>-0.5</td><td>-0.5</td><td>0.0</td><td>-110.0</td></tr><tr><td>NBA|total|MID_6H_24H|MyBookie|over</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1.0</td><td>0.952381</td><td>1.0</td><td>0.952381</td><td>0.5</td><td>0.5</td><td>1.0</td><td>-105.0</td></tr>
+  </tbody>
+</table>
+
+  <h2>6. CLV Diagnostics</h2>
+  <img src="charts/clv_line_over_time.png" alt="clv_line_over_time" style="max-width:100%;"/><br/>
+  <img src="charts/clv_odds_over_time.png" alt="clv_odds_over_time" style="max-width:100%;"/><br/>
+  <img src='charts/clv_vs_roi_scatter.png' alt='clv_vs_roi_scatter' style='max-width:100%;'/>
+
+  <hr/>
+  <p><b>Phase 2 receipt (verbatim):</b> meta/phase2_receipt_copy.json</p>
+  <p><b>Phase 2 input manifest:</b> meta/phase2_inputs_manifest.json</p>
+  <p><b>Phase 3 render receipt:</b> meta/phase3_render_receipt.json</p>
+</body>
+</html>

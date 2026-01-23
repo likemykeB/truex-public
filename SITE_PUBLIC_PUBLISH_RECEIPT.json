@@ -1,0 +1,16 @@
+﻿{
+    "site_dest":  "C:\\TRUEX\\site\\public\\latest",
+    "manifest_sha256":  "4868DB47C66F3E9FFD696F7DF9CAF5B6797F3C73EA8D7299F9083AAA09D021E7",
+    "source_latest":  "C:\\TRUEX\\presentation_out\\latest",
+    "root":  "C:\\TRUEX",
+    "copied_files":  [
+                         "index.html",
+                         "report.html",
+                         "PUBLIC_PROOF_PACK_TRUEX_CORE.zip",
+                         "PUBLIC_PROOF_PACK_TRUEX_CORE_RECEIPT.json"
+                     ],
+    "timestamp_utc":  "2026-01-22T22:44:47.6170448Z",
+    "manifest_file":  "C:\\TRUEX\\site\\public\\latest\\SITE_PUBLIC_MANIFEST_SHA256.txt",
+    "status":  "OK",
+    "selected_public_pack":  "PUBLIC_PROOF_PACK_TRUEX_CORE.zip"
+}
