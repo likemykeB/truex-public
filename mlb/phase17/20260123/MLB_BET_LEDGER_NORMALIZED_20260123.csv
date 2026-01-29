@@ -1,0 +1,2 @@
+"bet_id","placed_utc","event_date","home_team","away_team","event_id","market","selection","line","odds_american","stake_units","book"
+"TEST001","2026-01-23T00:00:00Z","2026-01-23","LAD","SD","MLB_20260123_SD_LAD","ml","LAD","","-110","1.0","TESTBOOK"

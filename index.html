@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<title>TRUEX - Presentation Runs</title>
+<style>
+:root { --fg:#111; --muted:#666; --bg:#fff; --card:#f7f7f7; --border:#e5e5e5; --link:#0b57d0; }
+body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color:var(--fg); background:var(--bg); margin:24px; }
+h1 { font-size: 20px; margin: 0 0 8px 0; }
+h2 { font-size: 14px; margin: 18px 0 8px 0; }
+.sub { color:var(--muted); margin:0 0 18px 0; }
+a { color:var(--link); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.grid { display:grid; grid-template-columns: 1fr; gap:12px; }
+.card { border:1px solid var(--border); background:var(--card); padding:12px 14px; border-radius:10px; }
+.row { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center; }
+.title { font-weight: 700; }
+.pill { display:inline-block; font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--muted); }
+.pill.latest { color:#0b57d0; border-color:#c9defa; }
+.meta { margin-top:8px; color:var(--muted); font-size: 12px; }
+.kv { margin-top:10px; font-size:12px; color:var(--muted); line-height:1.5; }
+.kv code { background:#fff; border:1px solid var(--border); padding:1px 6px; border-radius:6px; color:#333; }
+.table { width:100%; border-collapse:collapse; font-size:12px; }
+.table th, .table td { border:1px solid var(--border); padding:6px 8px; vertical-align:top; }
+.table th { background:#fff; text-align:left; color:#333; }
+.small { font-size:12px; color:var(--muted); }
+.quick a { margin-right: 14px; }
+</style>
+</head>
+<body>
+<h1>TRUEX - Presentation Runs</h1>
+<p class='sub'>Phase 3 (presentation-only) index. Read-only view over generated run folders. No math.</p>
+<div class='card quick'>
+<div class='title'>Quick Links</div>
+<div class='meta' style='margin-top:8px'>
+<a href='latest/report.html'>Open Latest Report</a>
+<a href='runs/20260122_144446/'>Open Latest Run Folder</a>
+<a href='runs/20260122_144446/meta/phase3_run_receipt.json'>Open Latest Receipt</a>
+<a href='runs/'>Browse Runs</a>
+</div>
+</div>
+<div class='row' style='margin:10px 0 10px 0'>
+<div class='small'>
+Latest run: <strong>20260122_144446</strong>
+</div>
+<div class='small'>
+Previous: 20260122_144206
+</div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill latest'>LATEST</span>&nbsp; Highlights</div>
+<div><a href='runs/20260122_144446/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_144446/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:44:46Z</div>
+<div class='kv'>
+<div><code>created_utc</code> 2026-01-22T22:44:46.553897+00:00</div>
+<div><code>phase</code> PHASE3_PRESENTATION</div>
+</div>
+<div class='meta' style='margin-top:10px'>
+Previous run: <a href='runs/20260122_144206/report.html'>20260122_144206/report.html</a>
+</div>
+</div>
+<h2>Latest vs Previous - Receipt Diff (scalars only)</h2>
+<div class='card'>
+<table class='table'>
+<thead><tr><th>Field</th><th>Latest</th><th>Previous</th></tr></thead>
+<tbody>
+<tr><td><code>created_utc</code></td><td>2026-01-22T22:44:46.553897+00:00</td><td>2026-01-22T22:42:07.150531+00:00</td></tr>
+<tr><td><code>out_dir</code></td><td>C:\trueX\presentation_out\runs\20260122_144446</td><td>C:\trueX\presentation_out\runs\20260122_144206</td></tr>
+</tbody></table>
+</div>
+<h2>Recent Runs</h2>
+<div class='grid'>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill latest'>LATEST</span> &nbsp; 20260122_144446</div>
+<div><a href='runs/20260122_144446/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_144446/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:44:46Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_144446/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_144446/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_144446/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_144206</div>
+<div><a href='runs/20260122_144206/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_144206/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:42:07Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_144206/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_144206/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_144206/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_143908</div>
+<div><a href='runs/20260122_143908/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_143908/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:39:09Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_143908/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_143908/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_143908/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_143906</div>
+<div><a href='runs/20260122_143906/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_143906/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:39:07Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_143906/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_143906/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_143906/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_143738</div>
+<div><a href='runs/20260122_143738/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_143738/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:37:39Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_143738/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_143738/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_143738/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_142903</div>
+<div><a href='runs/20260122_142903/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_142903/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:29:04Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_142903/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_142903/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_142903/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_142743</div>
+<div><a href='runs/20260122_142743/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_142743/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:27:44Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_142743/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_142743/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_142743/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_142529</div>
+<div><a href='runs/20260122_142529/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_142529/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:25:30Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_142529/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_142529/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_142529/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_142406</div>
+<div><a href='runs/20260122_142406/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_142406/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:24:07Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_142406/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_142406/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_142406/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_142359</div>
+<div><a href='runs/20260122_142359/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_142359/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:24:00Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_142359/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_142359/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_142359/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_142351</div>
+<div><a href='runs/20260122_142351/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_142351/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:23:52Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_142351/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_142351/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_142351/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_141917</div>
+<div><a href='runs/20260122_141917/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_141917/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:19:18Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_141917/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_141917/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_141917/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_141614</div>
+<div><a href='runs/20260122_141614/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_141614/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:16:14Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_141614/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_141614/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_141614/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_141327</div>
+<div><a href='runs/20260122_141327/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_141327/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:13:28Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_141327/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_141327/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_141327/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_141013</div>
+<div><a href='runs/20260122_141013/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_141013/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:10:14Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_141013/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_141013/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_141013/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_140817</div>
+<div><a href='runs/20260122_140817/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_140817/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:08:18Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_140817/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_140817/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_140817/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_140716</div>
+<div><a href='runs/20260122_140716/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_140716/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:07:17Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_140716/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_140716/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_140716/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_140659</div>
+<div><a href='runs/20260122_140659/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_140659/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:07:00Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_140659/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_140659/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_140659/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_140115</div>
+<div><a href='runs/20260122_140115/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_140115/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T22:01:16Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_140115/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_140115/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_140115/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_133240</div>
+<div><a href='runs/20260122_133240/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_133240/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T21:32:41Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_133240/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_133240/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_133240/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_132454</div>
+<div><a href='runs/20260122_132454/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_132454/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T21:24:55Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_132454/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_132454/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_132454/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_132248</div>
+<div><a href='runs/20260122_132248/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_132248/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T21:22:49Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_132248/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_132248/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_132248/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_132143</div>
+<div><a href='runs/20260122_132143/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_132143/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T21:21:44Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_132143/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_132143/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_132143/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_131636</div>
+<div><a href='runs/20260122_131636/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_131636/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T21:16:37Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_131636/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_131636/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_131636/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_131629</div>
+<div><a href='runs/20260122_131629/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_131629/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T21:16:30Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_131629/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_131629/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_131629/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_131610</div>
+<div><a href='runs/20260122_131610/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_131610/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T21:16:10Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_131610/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_131610/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_131610/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_131559</div>
+<div><a href='runs/20260122_131559/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_131559/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T21:16:00Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_131559/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_131559/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_131559/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_130847</div>
+<div><a href='runs/20260122_130847/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_130847/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T21:08:48Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_130847/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_130847/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_130847/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_121417</div>
+<div><a href='runs/20260122_121417/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_121417/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T20:14:18Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_121417/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_121417/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_121417/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_121034</div>
+<div><a href='runs/20260122_121034/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_121034/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T20:10:35Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_121034/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_121034/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_121034/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_120536</div>
+<div><a href='runs/20260122_120536/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_120536/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T20:05:38Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_120536/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_120536/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_120536/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_120409</div>
+<div><a href='runs/20260122_120409/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_120409/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T20:04:11Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_120409/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_120409/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_120409/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_120037</div>
+<div><a href='runs/20260122_120037/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_120037/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T20:00:38Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_120037/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_120037/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_120037/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_115953</div>
+<div><a href='runs/20260122_115953/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_115953/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T19:59:54Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_115953/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_115953/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_115953/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_115126</div>
+<div><a href='runs/20260122_115126/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_115126/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T19:51:27Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_115126/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_115126/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_115126/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_114243</div>
+<div><a href='runs/20260122_114243/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_114243/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T19:42:44Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_114243/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_114243/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_114243/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_113846</div>
+<div><a href='runs/20260122_113846/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_113846/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T19:38:46Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_113846/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_113846/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_113846/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_113713</div>
+<div><a href='runs/20260122_113713/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_113713/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T19:37:13Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_113713/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_113713/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_113713/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_113328</div>
+<div><a href='runs/20260122_113328/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_113328/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T19:33:29Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_113328/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_113328/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_113328/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_112906</div>
+<div><a href='runs/20260122_112906/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_112906/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T19:29:07Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_112906/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_112906/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_112906/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_111640</div>
+<div><a href='runs/20260122_111640/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_111640/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T19:16:41Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_111640/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_111640/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_111640/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_103001</div>
+<div><a href='runs/20260122_103001/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_103001/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T18:30:02Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_103001/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_103001/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_103001/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_102809</div>
+<div><a href='runs/20260122_102809/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_102809/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T18:28:10Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_102809/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_102809/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_102809/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_102010</div>
+<div><a href='runs/20260122_102010/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_102010/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T18:20:11Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_102010/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_102010/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_102010/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_101647</div>
+<div><a href='runs/20260122_101647/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_101647/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T18:16:47Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_101647/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_101647/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_101647/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_101445</div>
+<div><a href='runs/20260122_101445/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_101445/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T18:14:46Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_101445/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_101445/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_101445/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_101011</div>
+<div><a href='runs/20260122_101011/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_101011/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T18:10:11Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_101011/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_101011/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_101011/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_100823</div>
+<div><a href='runs/20260122_100823/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_100823/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T18:08:24Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_100823/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_100823/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_100823/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_100333</div>
+<div><a href='runs/20260122_100333/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_100333/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T18:03:33Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_100333/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_100333/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_100333/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+<div class='card'>
+<div class='row'>
+<div class='title'><span class='pill'>RUN</span> &nbsp; 20260122_100149</div>
+<div><a href='runs/20260122_100149/report.html'>report.html</a> &nbsp;·&nbsp; <a href='runs/20260122_100149/'>folder</a></div>
+</div>
+<div class='meta'>Folder mtime (UTC): 2026-01-22T18:01:50Z &nbsp;·&nbsp; Receipts: <a href='runs/20260122_100149/meta/phase3_run_receipt.json'>phase3_run_receipt.json</a> · <a href='runs/20260122_100149/meta/phase3_render_receipt.json'>phase3_render_receipt.json</a> · <a href='runs/20260122_100149/meta/phase2_inputs_manifest.json'>phase2_inputs_manifest.json</a></div>
+</div>
+</div>
+<p class='sub' style='margin-top:18px'>Index built (UTC): 2026-01-22T22:44:47Z</p>
+</body></html>
