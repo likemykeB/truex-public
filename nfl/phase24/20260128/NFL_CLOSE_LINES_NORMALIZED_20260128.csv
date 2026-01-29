@@ -1,0 +1,2 @@
+sport,run_date,game_id,game_date,away_team,home_team,close_spread_home,close_total,close_ml_home,close_ml_away,source,pulled_at_utc
+nfl,20260128,NFL_20260128_NE@DEN,2026-01-28,NE,DEN,-3.5,44.5,,,MANUAL_CLOSE_EXPORT_V1,2026-01-28T23:59:00Z
