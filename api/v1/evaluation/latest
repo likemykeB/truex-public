@@ -1,0 +1,21 @@
+﻿{
+  "scope": "all_models",
+  "server_time_utc": "2026-02-04T20:30:00Z",
+  "integrity": {
+    "verdict": "FAIL",
+    "evidence_status": "OPERATIONAL",
+    "consistency": "FRACTURED",
+    "active_market_classes": ["SPREAD", "TOTAL", "PROP_LIQUID", "PROP_THIN"],
+    "guardrail_text": "Verdicts evaluate process integrity, not outcomes."
+  },
+  "progress": {
+    "bets_count": 141,
+    "evidence_target_bets": 100,
+    "progress_label": "141 / 100 bets toward evidence",
+    "operational_flag": true
+  },
+  "last_update": {
+    "last_update_ts_utc": "2026-02-04T20:10:00Z",
+    "skip": null
+  }
+}

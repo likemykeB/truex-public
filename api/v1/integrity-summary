@@ -1,0 +1,39 @@
+﻿{
+  "scope": "all_models",
+  "include_prop_thin": false,
+  "server_time_utc": "2026-02-04T20:30:00Z",
+  "evidence_qualification": {
+    "bets_count": 141,
+    "weeks_span": 6.3,
+    "active_days": 22,
+    "status": "OPERATIONAL"
+  },
+  "integrity_verdict": {
+    "verdict": "FAIL",
+    "definition": "FAIL indicates the observed market interaction is inconsistent with a stable execution edge under current conditions."
+  },
+  "process_consistency": {
+    "consistency": "FRACTURED",
+    "explanation": "Execution behavior appears mixed across market classes and timing. This reduces interpretability and increases the likelihood that outcomes are masking degraded pricing.",
+    "guardrail": "TRUEX does not identify strategies."
+  },
+  "cross_sport_breakdown": [
+    {"sport":"nfl","signal":"CONTRIBUTING_FAILURE","notes":"CLV decay persisted into higher-liquidity windows."},
+    {"sport":"nba","signal":"AT_RISK","notes":"Slippage clustering increased in recent activity."},
+    {"sport":"nhl","signal":"HOLDING","notes":"Pricing quality stable relative to other sports in the sample."},
+    {"sport":"mlb","signal":"INSUFFICIENT_DATA","notes":"Not enough active days to classify sport-level signal."}
+  ],
+  "plain_english": "The combined execution process is interacting with the market at worse prices more frequently over time. Recent outcomes include wins, but the pricing trend suggests those wins may be masking deterioration. The verdict applies to the combined process, not any single sport or model in isolation.",
+  "what_truex_does_not_do": [
+    "Compute EV",
+    "Recommend bets",
+    "Provide strategy advice",
+    "Show profit curves or ROI",
+    "Optimize execution or sizing"
+  ],
+  "rendered_markdown": null,
+  "export": {
+    "markdown_url": null,
+    "pdf_url": null
+  }
+}

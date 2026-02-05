@@ -1,0 +1,35 @@
+﻿{
+  "server_time_utc": "2026-02-04T20:30:00Z",
+  "models": [
+    {
+      "model_id": "MODEL_ALPHA",
+      "display_name": "Model Alpha",
+      "primary_market_class": "SPREAD",
+      "active_market_classes": ["SPREAD", "TOTAL"],
+      "latest_evaluation": {
+        "verdict": "WARN",
+        "evidence_status": "PROGRESS",
+        "consistency": "CONSISTENT",
+        "bets_count": 47,
+        "evidence_target_bets": 100,
+        "last_update_ts_utc": "2026-02-04T20:15:00Z",
+        "skip": null
+      }
+    },
+    {
+      "model_id": "MODEL_BETA",
+      "display_name": "Model Beta",
+      "primary_market_class": "PROP_LIQUID",
+      "active_market_classes": ["PROP_LIQUID", "PROP_THIN"],
+      "latest_evaluation": {
+        "verdict": "FAIL",
+        "evidence_status": "OPERATIONAL",
+        "consistency": "NOISY",
+        "bets_count": 128,
+        "evidence_target_bets": 100,
+        "last_update_ts_utc": "2026-02-04T20:10:00Z",
+        "skip": null
+      }
+    }
+  ]
+}
