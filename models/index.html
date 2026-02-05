@@ -1,0 +1,79 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>TRUEX — Models</title>
+  <link rel="stylesheet" href="../assets/truex.css"/>
+  <style>
+    .note{ color:var(--muted); font-size:12px; margin-top:10px; }
+    .table{ width:100%; border-collapse:collapse; font-size:13px; margin-top:10px; }
+    .table th,.table td{ border-top:1px solid rgba(36,48,74,.5); padding:10px 8px; text-align:left; vertical-align:top; }
+    .table th{ color:var(--muted); font-weight:600; }
+    .link{ text-decoration:underline; }
+    .mini{ font-size:12px; color:var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="modelsListRoot">
+
+    <div class="topbar">
+      <div class="brand">
+        <h1>TRUEX</h1>
+        <div class="sub">Models — Lightweight Separation (LOCKED v1)</div>
+      </div>
+
+      <div class="controls">
+        <div>
+          <label for="scopeSelect">Scope</label><br/>
+          <select id="scopeSelect" aria-label="Scope selector">
+            <option value="all_models">All Models</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="notice" class="notice"></div>
+
+    <div class="card" style="margin-top:14px;">
+      <h2>Model List</h2>
+      <div class="note">
+        Use “All Models” to evaluate combined execution. Model pages are scoped views only.
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Market Class</th>
+            <th>Verdict</th>
+            <th>Consistency</th>
+            <th>Bets</th>
+            <th>Evidence</th>
+          </tr>
+        </thead>
+        <tbody id="modelsRows"></tbody>
+      </table>
+
+      <div class="footerNav">
+        <a href="../index.html">Home</a>
+        <span>·</span>
+        <a href="../dashboard/index.html">Dashboard</a>
+        <span>·</span>
+        <a href="../charts/index.html">Charts</a>
+      <span>·</span>
+      <a href="../about/index.html">About</a>
+      <span>·</span>
+      <a href="../demo/index.html">Demo</a>
+        <span>·</span>
+        <a href="../integrity-summary/index.html">Integrity Summary</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../assets/truex.js"></script>
+</body>
+</html>
+
+

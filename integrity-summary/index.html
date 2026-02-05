@@ -1,0 +1,118 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>TRUEX — Integrity Summary</title>
+  <link rel="stylesheet" href="../assets/truex.css"/>
+  <style>
+    .sectionTitle{ margin:0 0 8px 0; font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; color:var(--muted); }
+    .table{ width:100%; border-collapse:collapse; font-size:13px; }
+    .table th,.table td{ border-top:1px solid rgba(36,48,74,.5); padding:10px 8px; text-align:left; vertical-align:top; }
+    .table th{ color:var(--muted); font-weight:600; }
+    .btnRow{ display:flex; gap:10px; flex-wrap:wrap; }
+    .btn{
+      padding:9px 12px; border-radius:12px; border:1px solid var(--line);
+      background:#0c1020; color:var(--text); font-size:13px; cursor:not-allowed;
+      opacity:.65;
+    }
+    .pill{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; border:1px solid var(--line); background:#0c1020; font-weight:600; font-size:13px; }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="summaryRoot">
+
+    <div class="topbar">
+      <div class="brand">
+        <h1>TRUEX</h1>
+        <div class="sub">Integrity Summary — Generated Report (LOCKED v1)</div>
+      </div>
+
+      <div class="controls">
+        <div>
+          <label for="scopeSelect">Scope</label><br/>
+          <select id="scopeSelect" aria-label="Scope selector">
+            <option value="all_models">All Models</option>
+          </select>
+        </div>
+        <div style="min-width:220px;">
+          <label class="mono">Exports (mock)</label><br/>
+          <div class="btnRow">
+            <button id="btnMd" class="btn" title="Mock mode: disabled">Export Markdown</button>
+            <button id="btnPdf" class="btn" title="Mock mode: disabled">Export PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="notice" class="notice"></div>
+
+    <div class="card" style="margin-top:14px;">
+      <h2 class="sectionTitle">Evidence Qualification</h2>
+      <div class="row"><div class="k">Bets count</div><div id="eqBets" class="v">—</div></div>
+      <div class="row"><div class="k">Span (weeks)</div><div id="eqWeeks" class="v">—</div></div>
+      <div class="row"><div class="k">Active days</div><div id="eqDays" class="v">—</div></div>
+      <div class="row"><div class="k">Status</div><div id="eqStatus" class="v">—</div></div>
+    </div>
+
+    <div class="grid" style="margin-top:14px;">
+      <div class="card">
+        <h2 class="sectionTitle">Integrity Verdict</h2>
+        <div class="row">
+          <div class="k">Verdict</div>
+          <div class="v"><span id="sumVerdict" class="verdict"><span class="dot"></span><span class="label">—</span></span></div>
+        </div>
+        <div class="small" id="sumVerdictDef">—</div>
+      </div>
+
+      <div class="card">
+        <h2 class="sectionTitle">Process Consistency Check</h2>
+        <div class="row"><div class="k">Consistency</div><div id="sumCons" class="v">—</div></div>
+        <div class="small" id="sumConsExpl">—</div>
+        <div class="guardrail" id="sumGuardrail">TRUEX does not identify strategies.</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h2 class="sectionTitle">Cross-Sport Integrity Breakdown</h2>
+      <table class="table">
+        <thead><tr><th>Sport</th><th>Signal</th><th>Notes</th></tr></thead>
+        <tbody id="sportRows"></tbody>
+      </table>
+      <div class="small" style="margin-top:10px;">
+        Sport-level signals are explanatory; verdicts are global.
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h2 class="sectionTitle">What This Means</h2>
+      <div id="plainEnglish" class="v">—</div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h2 class="sectionTitle">What TRUEX Does Not Do</h2>
+      <div id="doesNotDo" class="small">—</div>
+    </div>
+
+    <div class="footerNav">
+      <a href="../index.html">Home</a>
+      <span>·</span>
+      <a href="../dashboard/index.html">Dashboard</a>
+      <span>·</span>
+      <a href="../charts/index.html">Charts</a>
+      <span>·</span>
+      <a href="../about/index.html">About</a>
+      <span>·</span>
+      <a href="../demo/index.html">Demo</a>
+      <span>·</span>
+      <span>Models (Sprint S4)</span>
+    </div>
+
+  </div>
+
+  <script src="../assets/truex.js"></script>
+</body>
+</html>
+
+

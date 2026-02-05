@@ -1,0 +1,9 @@
+﻿{
+    "status":  "OK",
+    "robocopy_exitcode":  3,
+    "timestamp_utc":  "2026-02-05T15:05:01.8728339Z",
+    "dst":  "C:\\TRUEX\\deploy\\public_site_latest",
+    "phase":  "PHASE8",
+    "mode":  "DEPLOY_STAGING_MIRROR_FROM_DAILY",
+    "src":  "C:\\TRUEX\\site\\public\\latest"
+}

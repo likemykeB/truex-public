@@ -1,0 +1,215 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>TRUEX — Demo (FAIL Example)</title>
+  <link rel="stylesheet" href="../assets/truex.css"/>
+  <style>
+    .hero{
+      margin-top:14px;
+      border:1px solid rgba(36,48,74,.6);
+      background:linear-gradient(180deg, var(--panel), #0c1020);
+      border-radius:14px;
+      padding:16px;
+    }
+    .hero h2{ margin:0 0 6px 0; font-size:18px; }
+    .hero .sub{ color:var(--muted); font-size:13px; line-height:1.5; }
+    .hardline{
+      margin-top:12px;
+      border:1px solid rgba(185,90,90,.40);
+      background:rgba(185,90,90,.10);
+      border-radius:14px;
+      padding:12px 14px;
+      font-size:14px;
+      line-height:1.5;
+    }
+    .sectionTitle{ margin:0 0 8px 0; font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+    .p{ color:var(--text); line-height:1.55; font-size:14px; }
+    .callout{
+      border:1px solid rgba(36,48,74,.55);
+      background:#0c1020;
+      border-radius:14px;
+      padding:12px 14px;
+      color:var(--text);
+      font-size:13px;
+      line-height:1.5;
+    }
+    .mini{ color:var(--muted); font-size:12px; }
+    .table{ width:100%; border-collapse:collapse; font-size:13px; }
+    .table th,.table td{ border-top:1px solid rgba(36,48,74,.5); padding:10px 8px; text-align:left; vertical-align:top; }
+    .table th{ color:var(--muted); font-weight:600; }
+    .chip{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; border:1px solid var(--line); background:#0c1020; font-weight:600; font-size:13px; }
+    .dot{ width:8px; height:8px; border-radius:99px; background:var(--muted); }
+    .chip.fail .dot{ background:var(--fail); }
+    .chip.warn .dot{ background:var(--warn); }
+    .chip.pass .dot{ background:var(--pass); }
+    .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px; }
+    @media (max-width: 900px){ .grid2{ grid-template-columns:1fr; } }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; color:var(--muted); }
+    .exhibit{ margin-top:14px; }
+    .exhibit ul{ margin:8px 0 0 18px; }
+    .exhibit li{ margin:6px 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="demoRoot">
+
+    <div class="topbar">
+      <div class="brand">
+        <h1>TRUEX</h1>
+        <div class="sub">Public Demo — One FAIL / ERODING Example (LOCKED v1)</div>
+      </div>
+
+      <div class="controls">
+        <div class="callout">
+          This demo is intentionally uncomfortable. It is here to prevent misunderstanding.
+        </div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h2>Demo: “Wins masking decay”</h2>
+      <div class="sub">
+        This page shows a single example where results included wins, but market interaction deteriorated over time.
+        TRUEX evaluates interaction with the market, not outcomes.
+      </div>
+
+      <div class="hardline">
+        <b>TRUEX may prove your results are misleading.</b>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h2 class="sectionTitle">Demo verdict</h2>
+        <div class="row">
+          <div class="k">Integrity verdict</div>
+          <div class="v"><span class="chip fail"><span class="dot"></span><span>FAIL</span></span></div>
+        </div>
+        <div class="row">
+          <div class="k">Evidence status</div>
+          <div class="v">OPERATIONAL</div>
+        </div>
+        <div class="row">
+          <div class="k">Consistency</div>
+          <div class="v">FRACTURED</div>
+        </div>
+        <div class="mini">
+          Verdicts evaluate process integrity, not outcomes. This does not identify strategies.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="sectionTitle">What you’re looking at</h2>
+        <div class="p">
+          The exhibits below describe three observable patterns:
+        </div>
+        <ul class="p">
+          <li><b>CLV decay</b> (prices getting worse relative to close)</li>
+          <li><b>Slippage clustering</b> (more bets placed at worse-than-close prices)</li>
+          <li><b>Outcome masking</b> (wins occurring inside negative pricing regimes)</li>
+        </ul>
+        <div class="guardrail">
+          No EV. No picks. No “fix this.” Only observation.
+        </div>
+      </div>
+    </div>
+
+    <div class="card exhibit">
+      <h2 class="sectionTitle">Exhibit A — Outcome masking</h2>
+      <div class="p">
+        In this example, outcomes include wins across multiple CLV buckets — including buckets with negative pricing.
+        That can create a false sense of stability even while pricing quality deteriorates.
+      </div>
+      <div class="mini">
+        Map to Charts → “Outcomes vs Price Quality”: wins exist even where CLV is negative.
+      </div>
+    </div>
+
+    <div class="card exhibit">
+      <h2 class="sectionTitle">Exhibit B — CLV decays over time</h2>
+      <div class="p">
+        CLV trends downward across the sample. The zero-line is visible; points increasingly fall below it.
+        That is a market-interaction signal, independent of wins/losses.
+      </div>
+      <div class="mini">
+        Map to Charts → “CLV vs Time”: later points cluster below 0.
+      </div>
+    </div>
+
+    <div class="card exhibit">
+      <h2 class="sectionTitle">Exhibit C — Slippage rate rises</h2>
+      <div class="p">
+        Slippage frequency increases across windows, meaning a larger share of bets are placed at prices worse than the close.
+        This can happen through timing drift, market class mixing, or execution inconsistency.
+      </div>
+      <div class="mini">
+        Map to Charts → “Slippage Frequency Over Time”: the line rises across windows.
+      </div>
+    </div>
+
+    <div class="card exhibit">
+      <h2 class="sectionTitle">Exhibit D — Cross-sport breakdown (explanatory)</h2>
+      <div class="p">
+        Sport-level signals explain where deterioration is concentrated. They do not override the global verdict.
+      </div>
+
+      <table class="table">
+        <thead><tr><th>Sport</th><th>Signal</th><th>Why it matters here</th></tr></thead>
+        <tbody>
+          <tr><td>NFL</td><td>CONTRIBUTING_FAILURE</td><td>CLV decay persisted into higher-liquidity windows.</td></tr>
+          <tr><td>NBA</td><td>AT_RISK</td><td>Slippage clustering increased in recent activity.</td></tr>
+          <tr><td>NHL</td><td>HOLDING</td><td>Pricing quality was more stable than other sports in the sample.</td></tr>
+          <tr><td>MLB</td><td>INSUFFICIENT_DATA</td><td>Not enough active days to classify sport-level signal.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="mini" style="margin-top:10px;">
+        Sport-level signals are explanatory; verdicts are global.
+      </div>
+    </div>
+
+    <div class="card exhibit">
+      <h2 class="sectionTitle">Plain-English interpretation</h2>
+      <div class="p">
+        The combined execution process is interacting with the market at worse prices more frequently over time.
+        Outcomes include wins, but the pricing trend suggests those wins may be masking deterioration.
+        The verdict applies to the combined process, not any single bet, sport, or model in isolation.
+      </div>
+      <div class="guardrail">
+        TRUEX does not provide recommendations. It does not compute EV. It does not tell you what to do.
+      </div>
+    </div>
+
+    <div class="card exhibit">
+      <h2 class="sectionTitle">Where to verify this in the UI</h2>
+      <ul class="p">
+        <li><b>Charts page</b> → CLV vs Time, Slippage Frequency, Outcomes vs Price Quality</li>
+        <li><b>Integrity Summary</b> → Verdict + Evidence status + Consistency + Cross-sport table</li>
+        <li><b>About</b> → Definitions and “what TRUEX does not do”</li>
+      </ul>
+      <div class="mini mono">
+        Demo uses the same mock payloads as the local v1 UI build.
+      </div>
+    </div>
+
+    <div class="footerNav">
+      <a href="../index.html">Home</a>
+      <span>·</span>
+      <a href="../about/index.html">About</a>
+      <span>·</span>
+      <a href="../dashboard/index.html">Dashboard</a>
+      <span>·</span>
+      <a href="../charts/index.html">Charts</a>
+      <span>·</span>
+      <a href="../integrity-summary/index.html">Integrity Summary</a>
+      <span>·</span>
+      <a href="../models/index.html">Models</a>
+    </div>
+
+  </div>
+
+  <script src="../assets/truex.js"></script>
+</body>
+</html>

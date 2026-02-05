@@ -1,0 +1,109 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>TRUEX — Model</title>
+  <link rel="stylesheet" href="../assets/truex.css"/>
+  <style>
+    .chartCard { margin-top:14px; }
+    .chartTitle { margin:0 0 8px 0; font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+    .chartBox { height:320px; border:1px solid rgba(36,48,74,.5); border-radius:14px; background:#0c1020; padding:10px; }
+    canvas { width:100%; height:100%; display:block; }
+    .metaLine{ margin-top:10px; font-size:12px; color:var(--muted); display:flex; gap:10px; flex-wrap:wrap; }
+    .metaLine .badge{ padding:4px 10px; }
+    .note{ color:var(--muted); font-size:12px; margin-top:10px; }
+    .table{ width:100%; border-collapse:collapse; font-size:13px; }
+    .table th,.table td{ border-top:1px solid rgba(36,48,74,.5); padding:10px 8px; text-align:left; vertical-align:top; }
+    .table th{ color:var(--muted); font-weight:600; }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="modelDetailRoot">
+
+    <div class="topbar">
+      <div class="brand">
+        <h1>TRUEX</h1>
+        <div class="sub">Model Detail — Scoped View (LOCKED v1)</div>
+      </div>
+
+      <div class="controls">
+        <div>
+          <label for="scopeSelect">Scope</label><br/>
+          <select id="scopeSelect" aria-label="Scope selector">
+            <option value="all_models">All Models</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="notice" class="notice"></div>
+
+    <div class="card" style="margin-top:14px;">
+      <h2>Model</h2>
+      <div class="metaLine">
+        <span class="badge">model_id: <span id="modelId">—</span></span>
+        <span class="badge">display: <span id="modelName">—</span></span>
+        <span class="badge">primary_market: <span id="modelPrimary">—</span></span>
+      </div>
+      <div class="note">
+        This page is a scoped view. Use “All Models” for combined execution verdicts.
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="card chartCard">
+      <h2 class="chartTitle">CLV vs Time</h2>
+      <div class="chartBox"><canvas id="clvCanvas"></canvas></div>
+    </div>
+
+    <div class="card chartCard">
+      <h2 class="chartTitle">Slippage Frequency Over Time</h2>
+      <div class="chartBox"><canvas id="slipCanvas"></canvas></div>
+    </div>
+
+    <div class="card chartCard">
+      <h2 class="chartTitle">Outcomes vs Price Quality</h2>
+      <div class="chartBox"><canvas id="outCanvas"></canvas></div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h2>Caption</h2>
+      <div class="small" id="chartsCaption">
+        Outcomes may mask poor pricing. Charts are descriptive.
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card" style="margin-top:14px;">
+      <h2>Integrity Summary (Scoped)</h2>
+      <div class="row"><div class="k">Evidence</div><div id="sumEvidence" class="v">—</div></div>
+      <div class="row"><div class="k">Verdict</div><div class="v"><span id="sumVerdict" class="verdict"><span class="dot"></span><span class="label">—</span></span></div></div>
+      <div class="row"><div class="k">Consistency</div><div id="sumCons" class="v">—</div></div>
+      <div class="small" id="sumPlain">—</div>
+      <div class="guardrail" style="margin-top:10px;">TRUEX does not identify strategies.</div>
+    </div>
+
+    <div class="footerNav">
+      <a href="../index.html">Home</a>
+      <span>·</span>
+      <a href="../models/index.html">Models</a>
+      <span>·</span>
+      <a href="../dashboard/index.html">Dashboard</a>
+      <span>·</span>
+      <a href="../charts/index.html">Charts</a>
+      <span>·</span>
+      <a href="../about/index.html">About</a>
+      <span>·</span>
+      <a href="../demo/index.html">Demo</a>
+      <span>·</span>
+      <a href="../integrity-summary/index.html">Integrity Summary</a>
+    </div>
+
+  </div>
+
+  <script src="../assets/truex.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,112 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>TRUEX — Dashboard</title>
+  <link rel="stylesheet" href="../assets/truex.css"/>
+</head>
+<body>
+  <div class="wrap" id="dashboardRoot">
+
+    <div class="topbar">
+      <div class="brand">
+        <h1>TRUEX</h1>
+        <div class="sub">Dashboard — Orientation Only (LOCKED v1)</div>
+      </div>
+
+      <div class="controls">
+        <div>
+          <label for="scopeSelect">Scope</label><br/>
+          <select id="scopeSelect" aria-label="Scope selector">
+            <option value="all_models">All Models</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="notice" class="notice"></div>
+
+    <div class="grid">
+
+      <div class="card">
+        <h2>Integrity Status</h2>
+
+        <div class="row">
+          <div class="k">Verdict</div>
+          <div class="v">
+            <span id="verdictChip" class="verdict">
+              <span class="dot"></span>
+              <span class="label">—</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="k">Evidence Status</div>
+          <div id="evidenceStatus" class="v">—</div>
+        </div>
+
+        <div class="row">
+          <div class="k">Process Consistency</div>
+          <div id="consistency" class="v">—</div>
+        </div>
+
+        <div class="row">
+          <div class="k">Market Classes Active</div>
+          <div class="v badges" id="marketBadges"></div>
+        </div>
+
+        <div class="guardrail" id="guardrailText">
+          Verdicts evaluate process integrity, not outcomes.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Progress</h2>
+
+        <div class="progressWrap">
+          <div class="v" id="progressLabel">—</div>
+          <progress id="progressBar" value="0" max="100"></progress>
+          <div class="small" id="operationalFlag"></div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <h2>Last Update</h2>
+        <div class="row">
+          <div class="k">Latest evaluation</div>
+          <div id="lastUpdate" class="v">—</div>
+        </div>
+
+        <div id="skipBlock" style="display:none; margin-top:10px;">
+          <div class="badge" style="display:inline-block;">SKIP</div>
+          <div class="small" style="margin-top:8px;">
+            <div><strong>Reason:</strong> <span id="skipReason"></span></div>
+            <div id="skipDetails"></div>
+          </div>
+        </div>
+
+        <div class="footerNav">
+          <a href="../index.html">Home</a>
+          <span>·</span>
+          <a href="../charts/index.html">Charts</a>
+      <span>·</span>
+      <a href="../about/index.html">About</a>
+      <span>·</span>
+      <a href="../demo/index.html">Demo</a>
+          <span>·</span>
+          <span>Integrity Summary (Sprint S3)</span>
+          <span>·</span>
+          <span>Models (Sprint S4)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../assets/truex.js"></script>
+</body>
+</html>
+
+

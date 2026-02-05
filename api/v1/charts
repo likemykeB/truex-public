@@ -1,0 +1,51 @@
+﻿{
+  "scope": "all_models",
+  "include_prop_thin": false,
+  "server_time_utc": "2026-02-04T20:30:00Z",
+  "series": {
+    "clv_vs_time": {
+      "title": "CLV vs Time",
+      "x": "timestamp_utc",
+      "y": "clv_points",
+      "zero_line": 0.0,
+      "points": [
+        {"timestamp_utc":"2026-01-10T20:00:00Z","clv_points":0.4,"market_class":"SPREAD","sport":"nfl","model_id":"MODEL_ALPHA","bet_id":"B001"},
+        {"timestamp_utc":"2026-01-14T20:00:00Z","clv_points":0.2,"market_class":"TOTAL","sport":"nba","model_id":"MODEL_ALPHA","bet_id":"B002"},
+        {"timestamp_utc":"2026-01-20T20:00:00Z","clv_points":-0.1,"market_class":"SPREAD","sport":"nhl","model_id":"MODEL_ALPHA","bet_id":"B003"},
+        {"timestamp_utc":"2026-01-25T20:00:00Z","clv_points":-0.4,"market_class":"PROP_LIQUID","sport":"nba","model_id":"MODEL_BETA","bet_id":"B004"},
+        {"timestamp_utc":"2026-01-29T20:00:00Z","clv_points":-0.6,"market_class":"PROP_LIQUID","sport":"nfl","model_id":"MODEL_BETA","bet_id":"B005"},
+        {"timestamp_utc":"2026-02-02T20:00:00Z","clv_points":-0.8,"market_class":"SPREAD","sport":"mlb","model_id":"MODEL_BETA","bet_id":"B006"}
+      ]
+    },
+    "slippage_frequency_over_time": {
+      "title": "Slippage Frequency Over Time",
+      "x": "timestamp_utc",
+      "y": "slippage_rate",
+      "points": [
+        {"timestamp_utc":"2026-01-10T20:00:00Z","window_bets":20,"slippage_rate":0.25,"definition":"slippage = price worse than close"},
+        {"timestamp_utc":"2026-01-17T20:00:00Z","window_bets":20,"slippage_rate":0.35,"definition":"slippage = price worse than close"},
+        {"timestamp_utc":"2026-01-24T20:00:00Z","window_bets":20,"slippage_rate":0.45,"definition":"slippage = price worse than close"},
+        {"timestamp_utc":"2026-01-31T20:00:00Z","window_bets":20,"slippage_rate":0.55,"definition":"slippage = price worse than close"},
+        {"timestamp_utc":"2026-02-04T20:00:00Z","window_bets":20,"slippage_rate":0.60,"definition":"slippage = price worse than close"}
+      ]
+    },
+    "outcomes_vs_price_quality": {
+      "title": "Outcomes vs Price Quality",
+      "x": "clv_bucket",
+      "y": "count",
+      "buckets": [
+        {"clv_bucket":"<=-1.0","wins":8,"losses":12,"pushes":0},
+        {"clv_bucket":"-1.0..-0.5","wins":10,"losses":14,"pushes":0},
+        {"clv_bucket":"-0.5..0","wins":18,"losses":16,"pushes":1},
+        {"clv_bucket":"0..0.5","wins":15,"losses":10,"pushes":0},
+        {"clv_bucket":"0.5..1.0","wins":9,"losses":5,"pushes":0},
+        {"clv_bucket":">=1.0","wins":6,"losses":2,"pushes":0}
+      ],
+      "caption": "Outcomes may mask poor pricing. Charts are descriptive."
+    }
+  },
+  "captions": {
+    "static_caption": "Outcomes may mask poor pricing. Charts are descriptive.",
+    "thin_props_tooltip": "Thin props are excluded from integrity calculations."
+  }
+}
