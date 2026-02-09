@@ -1,9 +1,13 @@
-﻿{
-    "status":  "OK",
-    "robocopy_exitcode":  3,
-    "timestamp_utc":  "2026-02-05T15:05:01.8728339Z",
-    "dst":  "C:\\TRUEX\\deploy\\public_site_latest",
-    "phase":  "PHASE8",
-    "mode":  "DEPLOY_STAGING_MIRROR_FROM_DAILY",
-    "src":  "C:\\TRUEX\\site\\public\\latest"
+{
+  "phase": "PHASE8_DAILY",
+  "ts_local": "2026-02-09T08:03:16",
+  "ts_utc": "2026-02-09T16:03:16Z",
+  "root": "C:\\TRUEX",
+  "run_date_iso": "2026-02-09",
+  "run_date_compact": "20260209",
+  "src": "C:\\TRUEX\\site\\public\\latest",
+  "dst": "C:\\TRUEX\\deploy\\public_site_latest",
+  "robocopy_exitcode": 2,
+  "deploy_git_present_after_mirror": true,
+  "deploy_gitattributes_present_after_mirror": true
 }
