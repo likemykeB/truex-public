@@ -1,0 +1,27 @@
+{
+  "curve": [
+    {
+      "i": 1,
+      "profit_flat_cum": 0.0,
+      "profit_stake_cum": 0.0,
+      "roi_cum": 0.0,
+      "roi_flat_cum": 0.0,
+      "stake_cum": 1.0,
+      "units_cum": 1.0
+    },
+    {
+      "i": 2,
+      "profit_flat_cum": 0.0,
+      "profit_stake_cum": 0.0,
+      "roi_cum": 0.0,
+      "roi_flat_cum": 0.0,
+      "stake_cum": 2.0,
+      "units_cum": 2.0
+    }
+  ],
+  "engine": "RUN_ANALYTICS_SUMMARY_v1",
+  "run_ts_utc": "2026-02-13T14:12:31Z",
+  "source": {
+    "bets_frozen": "C:\\TRUEX\\deploy\\public_site_latest\\latest\\bets\\bets_frozen_v2.json"
+  }
+}

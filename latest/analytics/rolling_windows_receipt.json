@@ -1,0 +1,6 @@
+{
+  "engine": "RUN_ANALYTICS_SUMMARY_v1",
+  "rolling_windows_path": "C:\\TRUEX\\deploy\\public_site_latest\\latest\\analytics\\rolling_windows_latest.json",
+  "rolling_windows_sha256": "d4e966a5a556796a0d8fe0b6cfce5ef72932aee13040b264e8e89dcc91a5e24c",
+  "run_ts_utc": "2026-02-13T14:12:31Z"
+}

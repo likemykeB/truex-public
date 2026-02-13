@@ -1,0 +1,28 @@
+{
+  "bucket_rules": [
+    "-151+",
+    "-121..-150",
+    "-110..-120",
+    "-109..-1",
+    "0",
+    "+100..+150",
+    "+151+"
+  ],
+  "by_odds_bucket": {
+    "-110..-120": {
+      "bets": 2,
+      "hit_rate": 0.0,
+      "losses": 0,
+      "profit": 0.0,
+      "pushes": 0,
+      "roi": 0.0,
+      "stake": 2.0,
+      "wins": 0
+    }
+  },
+  "engine": "RUN_ANALYTICS_SUMMARY_v1",
+  "run_ts_utc": "2026-02-13T14:12:31Z",
+  "source": {
+    "bets_frozen": "C:\\TRUEX\\deploy\\public_site_latest\\latest\\bets\\bets_frozen_v2.json"
+  }
+}
