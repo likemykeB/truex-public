@@ -24,16 +24,20 @@
     .err { padding: 12px; border: 1px solid rgba(255,80,80,.5); border-radius: 12px; }
     .pill { display: inline-block; padding: 3px 8px; border: 1px solid rgba(127,127,127,.25); border-radius: 999px; font-size: 12px; }
     .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+    .links a { margin-right: 10px; }
     @media (max-width: 900px) { .row { grid-template-columns: repeat(2, minmax(0, 1fr)); } .two { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
   <header>
     <h1>TRUEX — Analytics Summary</h1>
-    <div class="sub">
-      Deterministic summary derived from <span class="mono">latest/analytics/summary_latest.json</span>
+    <div class="sub links">
+      <span>Derived from payload under <span class="mono">latest/analytics/</span></span>
       &nbsp;·&nbsp; <a href="./" rel="noopener">Home</a>
-      &nbsp;·&nbsp; <a href="./latest/analytics/summary_latest.json" rel="noopener">Raw JSON</a>
+      &nbsp;·&nbsp; <a href="./latest/analytics/summary_latest.json" rel="noopener">Summary JSON</a>
+      &nbsp;·&nbsp; <a href="./latest/analytics/rolling_windows_latest.json" rel="noopener">Rolling JSON</a>
+      &nbsp;·&nbsp; <a href="./latest/analytics/by_odds_bucket_latest.json" rel="noopener">Odds Buckets JSON</a>
+      &nbsp;·&nbsp; <a href="./latest/analytics/equity_curve_latest.json" rel="noopener">Equity Curve JSON</a>
     </div>
   </header>
 
@@ -42,6 +46,9 @@
     <div style="height:10px"></div>
 
     <div class="row" id="cards"></div>
+
+    <h3 style="margin:14px 0 10px; font-size:14px;">Rolling Windows</h3>
+    <div class="row" id="rolling"></div>
 
     <div class="two">
       <div>
@@ -53,6 +60,9 @@
         <div id="byMarket"></div>
       </div>
     </div>
+
+    <h3 style="margin:16px 0 10px; font-size:14px;">By Odds Bucket</h3>
+    <div id="byOdds"></div>
 
     <div style="height:16px"></div>
     <div class="mono" id="meta"></div>
@@ -66,15 +76,8 @@
   const fmtNum = (x, d=2) => (typeof x === "number" && Number.isFinite(x)) ? x.toFixed(d) : "—";
   const fmtInt = (x) => (Number.isFinite(Number(x)) ? String(Number(x)) : "—");
 
-  function setStatus(text) {
-    const el = document.getElementById("status");
-    el.textContent = text;
-  }
-
-  function setDebug(text) {
-    const el = document.getElementById("debug");
-    el.textContent = text || "";
-  }
+  function setStatus(text) { document.getElementById("status").textContent = text; }
+  function setDebug(text) { document.getElementById("debug").textContent = text || ""; }
 
   function makeCard(k, v, small="") {
     const el = document.createElement("div");
@@ -84,23 +87,6 @@
   }
 
   function makeTable(rows) {
-    if (!rows.length) return "<div class='card'>No data</div>";
-    let htmlI = (x) => fmtInt(x);
-    let html = "<table><thead><tr><th>Key</th><th>Bets</th><th>W</th><th>L</th><th>P</th><th>Hit%</th><th>ROI</th><th>Profit</th><th>Stake</th></tr></thead><tbody>";
-    for (const r of rows) {
-      html += "<tr>" +
-        "<td class='mono'>"+String(r.key)+"</td>" +
-        "<td>"+R(I(r.bets))+"</td>" +
-      "</tr>";
-    }
-    html += "</tbody></table>";
-    return html;
-
-    function I(x){ return Number.isFinite(Number(x)) ? Number(x) : 0; }
-    function R(x){ return String(x); }
-  }
-
-  function makeTable2(rows) {
     if (!rows.length) return "<div class='card'>No data</div>";
     let html = "<table><thead><tr><th>Key</th><th>Bets</th><th>W</th><th>L</th><th>P</th><th>Hit%</th><th>ROI</th><th>Profit</th><th>Stake</th></tr></thead><tbody>";
     for (const r of rows) {
@@ -130,44 +116,66 @@
   }
 
   async function run() {
-    const cards = document.getElementById("cards");
-    const bySport = document.getElementById("bySport");
-    const byMarket = document.getElementById("byMarket");
-    const meta = document.getElementById("meta");
-
     try {
-      const url = "./latest/analytics/summary_latest.json";
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error("HTTP " + res.status + " fetching " + url);
+      const summaryUrl = "./latest/analytics/summary_latest.json";
+      const rollingUrl = "./latest/analytics/rolling_windows_latest.json";
+      const oddsUrl = "./latest/analytics/by_odds_bucket_latest.json";
 
-      const j = await res.json();
+      const [sRes, rRes, oRes] = await Promise.all([
+        fetch(summaryUrl, { cache: "no-store" }),
+        fetch(rollingUrl, { cache: "no-store" }),
+        fetch(oddsUrl, { cache: "no-store" }),
+      ]);
+
+      if (!sRes.ok) throw new Error("HTTP " + sRes.status + " fetching " + summaryUrl);
+      if (!rRes.ok) throw new Error("HTTP " + rRes.status + " fetching " + rollingUrl);
+      if (!oRes.ok) throw new Error("HTTP " + oRes.status + " fetching " + oddsUrl);
+
+      const summary = await sRes.json();
+      const rolling = await rRes.json();
+      const odds = await oRes.json();
+
       setStatus("OK");
 
-      const t = j.totals || {};
-
+      const cards = document.getElementById("cards");
+      const t = summary.totals || {};
+      cards.innerHTML = "";
       cards.appendChild(makeCard("Total Bets", fmtInt(t.total_bets ?? 0)));
-      cards.appendChild(makeCard("Wins / Losses / Pushes", `${fmtInt(t.wins ?? 0)} / ${fmtInt(t.losses ?? 0)} / ${fmtInt(t.pushes ?? 0)}`));
+      cards.appendChild(makeCard("Wins / Losses / Pushes", ${fmtInt(t.wins ?? 0)} /  / ));
       cards.appendChild(makeCard("Hit Rate", fmtPct(t.hit_rate ?? 0)));
-      cards.appendChild(makeCard("ROI", fmtPct(t.roi ?? 0), `Profit ${fmtNum(t.profit ?? 0,2)} on Stake ${fmtNum(t.stake ?? 0,2)}`));
+      cards.appendChild(makeCard("ROI", fmtPct(t.roi ?? 0), Profit  on Stake ));
 
-      const sportRows = Object.entries(j.by_sport || {}).map(([k,v]) => ({ key:k, ...(v||{}) }))
+      const rRow = document.getElementById("rolling");
+      rRow.innerHTML = "";
+      const w30 = rolling.rolling_30d || {};
+      const w90 = rolling.rolling_90d || {};
+      const w365 = rolling.rolling_365d || {};
+      rRow.appendChild(makeCard("Rolling 30d ROI", fmtPct(w30.roi ?? 0), Bets  · Profit ));
+      rRow.appendChild(makeCard("Rolling 90d ROI", fmtPct(w90.roi ?? 0), Bets  · Profit ));
+      rRow.appendChild(makeCard("Rolling 365d ROI", fmtPct(w365.roi ?? 0), Bets  · Profit ));
+      rRow.appendChild(makeCard("Window Anchor", (rolling.window_anchor_ts_utc || "—"), "Max timestamp in data"));
+
+      const sportRows = Object.entries(summary.by_sport || {}).map(([k,v]) => ({ key:k, ...(v||{}) }))
         .sort((a,b)=> (n(b.bets)-n(a.bets)));
-      const marketRows = Object.entries(j.by_market || {}).map(([k,v]) => ({ key:k, ...(v||{}) }))
+      const marketRows = Object.entries(summary.by_market || {}).map(([k,v]) => ({ key:k, ...(v||{}) }))
         .sort((a,b)=> (n(b.bets)-n(a.bets)));
 
-      bySport.innerHTML = makeTable2(sportRows);
-      byMarket.innerHTML = makeTable2(marketRows);
+      document.getElementById("bySport").innerHTML = makeTable(sportRows);
+      document.getElementById("byMarket").innerHTML = makeTable(marketRows);
 
-      meta.innerHTML =
-        "run_ts_utc: <span class='mono'>" + (j.run_ts_utc || "—") + "</span>" +
-        " &nbsp;·&nbsp; engine: <span class='mono'>" + (j.engine || "—") + "</span>";
+      const oddsRows = Object.entries((odds.by_odds_bucket || {})).map(([k,v]) => ({ key:k, ...(v||{}) }))
+        .sort((a,b)=> String(a.key).localeCompare(String(b.key)));
+      document.getElementById("byOdds").innerHTML = makeTable(oddsRows);
+
+      document.getElementById("meta").innerHTML =
+        "run_ts_utc: <span class='mono'>" + (summary.run_ts_utc || "—") + "</span>" +
+        " &nbsp;·&nbsp; engine: <span class='mono'>" + (summary.engine || "—") + "</span>";
 
       setDebug("");
     } catch (e) {
       setStatus("ERROR");
       setDebug("Render error: " + (e?.message || e));
-      const bySport = document.getElementById("bySport");
-      bySport.innerHTML = "<div class='err'>Failed to render analytics.<br><span class='mono'>" + (e?.message || e) + "</span></div>";
+      document.getElementById("bySport").innerHTML = "<div class='err'>Failed to render analytics.<br><span class='mono'>" + (e?.message || e) + "</span></div>";
     }
   }
 
