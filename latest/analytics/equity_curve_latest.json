@@ -1,26 +1,20 @@
 {
-  "curve": [
+  "engine": "RUN_ANALYTICS_SUMMARY_v1",
+  "equity_curve": [
     {
-      "i": 1,
-      "profit_flat_cum": 0.0,
-      "profit_stake_cum": 0.0,
-      "roi_cum": 0.0,
-      "roi_flat_cum": 0.0,
-      "stake_cum": 1.0,
-      "units_cum": 1.0
+      "bet_id": "4bc0fa452e4ce7fbd66baeed",
+      "equity": 0.0,
+      "profit": 0.0,
+      "settlement_ts_utc": null
     },
     {
-      "i": 2,
-      "profit_flat_cum": 0.0,
-      "profit_stake_cum": 0.0,
-      "roi_cum": 0.0,
-      "roi_flat_cum": 0.0,
-      "stake_cum": 2.0,
-      "units_cum": 2.0
+      "bet_id": "ebb94927f26ed7c24b6ce593",
+      "equity": 0.0,
+      "profit": 0.0,
+      "settlement_ts_utc": null
     }
   ],
-  "engine": "RUN_ANALYTICS_SUMMARY_v1",
-  "run_ts_utc": "2026-02-13T14:18:50Z",
+  "run_ts_utc": "2026-02-13T15:08:05Z",
   "source": {
     "bets_frozen": "C:\\TRUEX\\deploy\\public_site_latest\\latest\\bets\\bets_frozen_v2.json"
   }

@@ -1,6 +1,7 @@
 {
   "engine": "RUN_ANALYTICS_SUMMARY_v1",
-  "run_ts_utc": "2026-02-13T14:18:50Z",
-  "summary_path": "C:\\TRUEX\\deploy\\public_site_latest\\latest\\analytics\\summary_latest.json",
-  "summary_sha256": "51114140c248a8fd63df75e0d0a06e64f1bacae462346db04ef2e29106170f56"
+  "input_sha256": "32a206ba3c610e252298edfd7800e6ab63ee5dced0a9935e4a1fc0092f51c1dc",
+  "output": "C:\\TRUEX\\deploy\\public_site_latest\\latest\\analytics\\summary_latest.json",
+  "output_sha256": "fb03fd4f766cb2384050ce8c07c5ca2065f2b307b66dd0e00d5864d41b282ee3",
+  "run_ts_utc": "2026-02-13T15:08:05Z"
 }

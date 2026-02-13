@@ -1,6 +1,5 @@
 {
   "engine": "RUN_ANALYTICS_SUMMARY_v1",
-  "notes": "Windows computed using settlement_ts_utc if present, else pick_ts_utc; anchor is max timestamp in data.",
   "rolling_30d": {
     "bets": 0,
     "hit_rate": 0.0,
@@ -8,7 +7,7 @@
     "profit": 0.0,
     "pushes": 0,
     "roi": 0.0,
-    "stake": 2.0,
+    "stake": 0.0,
     "wins": 0
   },
   "rolling_365d": {
@@ -18,7 +17,7 @@
     "profit": 0.0,
     "pushes": 0,
     "roi": 0.0,
-    "stake": 2.0,
+    "stake": 0.0,
     "wins": 0
   },
   "rolling_90d": {
@@ -28,12 +27,12 @@
     "profit": 0.0,
     "pushes": 0,
     "roi": 0.0,
-    "stake": 2.0,
+    "stake": 0.0,
     "wins": 0
   },
-  "run_ts_utc": "2026-02-13T14:18:50Z",
+  "run_ts_utc": "2026-02-13T15:08:05Z",
   "source": {
     "bets_frozen": "C:\\TRUEX\\deploy\\public_site_latest\\latest\\bets\\bets_frozen_v2.json"
   },
-  "window_anchor_ts_utc": "2026-02-12T06:08:02Z"
+  "window_anchor_ts_utc": "2026-02-13T15:08:06Z"
 }

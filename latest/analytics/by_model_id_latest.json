@@ -1,6 +1,6 @@
 {
-  "by_odds_bucket": {
-    "[-150,-101]": {
+  "by_model_id": {
+    "MODEL_ALPHA": {
       "avg_odds": -110.0,
       "avg_stake": 1.0,
       "bets": 2,
