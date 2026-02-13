@@ -2,184 +2,292 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TRUEX Analytics</title>
   <style>
-    :root { color-scheme: light dark; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 0; }
-    header { padding: 18px 20px; border-bottom: 1px solid rgba(127,127,127,.25); }
-    header h1 { margin: 0; font-size: 18px; font-weight: 650; }
-    header .sub { margin-top: 6px; font-size: 12px; opacity: .8; }
-    main { padding: 18px 20px; max-width: 1100px; }
-    .row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
-    .card { border: 1px solid rgba(127,127,127,.25); border-radius: 12px; padding: 12px 12px; }
-    .k { font-size: 11px; opacity: .8; margin-bottom: 8px; }
-    .v { font-size: 20px; font-weight: 700; }
-    .small { font-size: 12px; opacity: .85; margin-top: 6px; }
-    table { width: 100%; border-collapse: collapse; border: 1px solid rgba(127,127,127,.25); border-radius: 12px; overflow: hidden; }
-    th, td { padding: 10px 10px; border-bottom: 1px solid rgba(127,127,127,.18); text-align: left; font-size: 13px; }
-    th { font-size: 12px; opacity: .85; }
-    tr:last-child td { border-bottom: none; }
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; opacity: .85; }
-    .err { padding: 12px; border: 1px solid rgba(255,80,80,.5); border-radius: 12px; }
-    .pill { display: inline-block; padding: 3px 8px; border: 1px solid rgba(127,127,127,.25); border-radius: 999px; font-size: 12px; }
-    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
-    .links a { margin-right: 10px; }
-    @media (max-width: 900px) { .row { grid-template-columns: repeat(2, minmax(0, 1fr)); } .two { grid-template-columns: 1fr; } }
+    :root { color-scheme: dark; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#0b0f14; color:#e6edf3; }
+    header { padding: 20px 18px; border-bottom: 1px solid #1f2630; position: sticky; top:0; background:#0b0f14; z-index: 5; }
+    h1 { margin: 0 0 6px 0; font-size: 20px; }
+    .muted { color:#9aa4b2; margin: 6px 0; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 16px; }
+    .card { background:#111826; border: 1px solid #1f2630; border-radius: 12px; padding: 14px; margin: 12px 0; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+    .mini { padding: 12px; }
+    h2 { margin: 0 0 10px 0; font-size: 16px; }
+    h3 { margin: 0 0 10px 0; font-size: 14px; color:#c8d1db; }
+    .meta { display:flex; gap:18px; flex-wrap: wrap; font-size: 12px; color:#c8d1db; }
+    .label { color:#9aa4b2; margin-right:6px; }
+    .tablewrap { overflow:auto; border-radius: 10px; border:1px solid #1f2630; }
+    table { width: 100%; border-collapse: collapse; min-width: 860px; }
+    th, td { padding: 10px 10px; border-bottom: 1px solid #1f2630; }
+    th { text-align: left; font-size: 12px; color:#9aa4b2; background:#0f1520; position: sticky; top: 0; }
+    td { font-size: 13px; }
+    .k { width: 240px; }
+    .n { text-align: right; font-variant-numeric: tabular-nums; }
+    .grid2 { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 900px) { .grid2 { grid-template-columns: 1fr; } table { min-width: 760px; } }
+    a { color:#8ab4ff; text-decoration: none; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>TRUEX — Analytics Summary</h1>
-    <div class="sub links">
-      <span>Derived from payload under <span class="mono">latest/analytics/</span></span>
-      &nbsp;·&nbsp; <a href="./" rel="noopener">Home</a>
-      &nbsp;·&nbsp; <a href="./latest/analytics/summary_latest.json" rel="noopener">Summary JSON</a>
-      &nbsp;·&nbsp; <a href="./latest/analytics/rolling_windows_latest.json" rel="noopener">Rolling JSON</a>
-      &nbsp;·&nbsp; <a href="./latest/analytics/by_odds_bucket_latest.json" rel="noopener">Odds Buckets JSON</a>
-      &nbsp;·&nbsp; <a href="./latest/analytics/equity_curve_latest.json" rel="noopener">Equity Curve JSON</a>
-    </div>
-  </header>
+<header>
+  <div class="wrap">
+    <h1>TRUEX Analytics</h1>
+    <div class="muted">Deterministic summary derived from public payload artifacts.</div>
+    <div class="meta">
+  <div><span class="label">Engine</span> RUN_ANALYTICS_SUMMARY_v1</div>
+  <div><span class="label">Run</span> 02/13/2026 15:08:05</div>
+  <div><span class="label">Source</span> C:\TRUEX\deploy\public_site_latest\latest\bets\bets_frozen_v2.json</div>
+</div>
+    <div class="muted">Artifacts: <a href="./latest/analytics/summary_latest.json">summary_latest.json</a> • <a href="./latest/analytics/rolling_windows_latest.json">rolling_windows_latest.json</a> • <a href="./latest/analytics/by_odds_bucket_latest.json">by_odds_bucket_latest.json</a> • <a href="./latest/analytics/by_model_id_latest.json">by_model_id_latest.json</a> • <a href="./latest/analytics/equity_curve_latest.json">equity_curve_latest.json</a></div>
+  </div>
+</header>
 
-  <main>
-    <div id="status" class="pill">Loading…</div>
-    <div style="height:10px"></div>
+<div class="wrap">
+  <section class="card">
+  <h2>Totals</h2>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="k">Key</th>
+          <th class="n">Bets</th>
+          <th class="n">W</th>
+          <th class="n">L</th>
+          <th class="n">P</th>
+          <th class="n">Hit</th>
+          <th class="n">ROI</th>
+          <th class="n">Profit</th>
+          <th class="n">Stake</th>
+          <th class="n">AvgOdds</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+    <td class='k'>TOTAL</td>
+    <td class='n'>2</td>
+    <td class='n'>0</td>
+    <td class='n'>0</td>
+    <td class='n'>0</td>
+    <td class='n'>0.000000</td>
+    <td class='n'>0.000000</td>
+    <td class='n'>0.00</td>
+    <td class='n'>2.00</td>
+    <td class='n'>-110.00</td>
+  </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+  <section class="card">
+  <h2>By Sport</h2>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="k">Key</th>
+          <th class="n">Bets</th>
+          <th class="n">W</th>
+          <th class="n">L</th>
+          <th class="n">P</th>
+          <th class="n">Hit</th>
+          <th class="n">ROI</th>
+          <th class="n">Profit</th>
+          <th class="n">Stake</th>
+          <th class="n">AvgOdds</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+    <td class='k'>nfl</td>
+    <td class='n'>2</td>
+    <td class='n'>0</td>
+    <td class='n'>0</td>
+    <td class='n'>0</td>
+    <td class='n'>0.000000</td>
+    <td class='n'>0.000000</td>
+    <td class='n'>0.00</td>
+    <td class='n'>2.00</td>
+    <td class='n'>-110.00</td>
+  </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+  <section class="card">
+  <h2>By Market</h2>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="k">Key</th>
+          <th class="n">Bets</th>
+          <th class="n">W</th>
+          <th class="n">L</th>
+          <th class="n">P</th>
+          <th class="n">Hit</th>
+          <th class="n">ROI</th>
+          <th class="n">Profit</th>
+          <th class="n">Stake</th>
+          <th class="n">AvgOdds</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+    <td class='k'>unknown</td>
+    <td class='n'>2</td>
+    <td class='n'>0</td>
+    <td class='n'>0</td>
+    <td class='n'>0</td>
+    <td class='n'>0.000000</td>
+    <td class='n'>0.000000</td>
+    <td class='n'>0.00</td>
+    <td class='n'>2.00</td>
+    <td class='n'>-110.00</td>
+  </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+  <section class="card">
+  <h2>Rolling Windows</h2>
+  <p class="muted">Anchor: 02/13/2026 15:08:06</p>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="k">Window</th>
+          <th class="n">Bets</th>
+          <th class="n">W</th>
+          <th class="n">L</th>
+          <th class="n">P</th>
+          <th class="n">Hit</th>
+          <th class="n">ROI</th>
+          <th class="n">Profit</th>
+          <th class="n">Stake</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="k">30d</td>
+          <td class="n">0</td>
+          <td class="n">0</td>
+          <td class="n">0</td>
+          <td class="n">0</td>
+          <td class="n">0.000000</td>
+          <td class="n">0.000000</td>
+          <td class="n">0.00</td>
+          <td class="n">0.00</td>
+        </tr>
+        <tr>
+          <td class="k">90d</td>
+          <td class="n">0</td>
+          <td class="n">0</td>
+          <td class="n">0</td>
+          <td class="n">0</td>
+          <td class="n">0.000000</td>
+          <td class="n">0.000000</td>
+          <td class="n">0.00</td>
+          <td class="n">0.00</td>
+        </tr>
+        <tr>
+          <td class="k">365d</td>
+          <td class="n">0</td>
+          <td class="n">0</td>
+          <td class="n">0</td>
+          <td class="n">0</td>
+          <td class="n">0.000000</td>
+          <td class="n">0.000000</td>
+          <td class="n">0.00</td>
+          <td class="n">0.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+  <section class="card">
+  <h2>By Odds Bucket</h2>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="k">Key</th>
+          <th class="n">Bets</th>
+          <th class="n">W</th>
+          <th class="n">L</th>
+          <th class="n">P</th>
+          <th class="n">Hit</th>
+          <th class="n">ROI</th>
+          <th class="n">Profit</th>
+          <th class="n">Stake</th>
+          <th class="n">AvgOdds</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+    <td class='k'>[-150,-101]</td>
+    <td class='n'>2</td>
+    <td class='n'>0</td>
+    <td class='n'>0</td>
+    <td class='n'>0</td>
+    <td class='n'>0.000000</td>
+    <td class='n'>0.000000</td>
+    <td class='n'>0.00</td>
+    <td class='n'>2.00</td>
+    <td class='n'>-110.00</td>
+  </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+  <section class="card">
+  <h2>By Model ID</h2>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="k">Key</th>
+          <th class="n">Bets</th>
+          <th class="n">W</th>
+          <th class="n">L</th>
+          <th class="n">P</th>
+          <th class="n">Hit</th>
+          <th class="n">ROI</th>
+          <th class="n">Profit</th>
+          <th class="n">Stake</th>
+          <th class="n">AvgOdds</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+    <td class='k'>MODEL_ALPHA</td>
+    <td class='n'>2</td>
+    <td class='n'>0</td>
+    <td class='n'>0</td>
+    <td class='n'>0</td>
+    <td class='n'>0.000000</td>
+    <td class='n'>0.000000</td>
+    <td class='n'>0.00</td>
+    <td class='n'>2.00</td>
+    <td class='n'>-110.00</td>
+  </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
-    <div class="row" id="cards"></div>
+  <section class="card">
+    <h2>Equity Curve Preview</h2>
+    <p class='muted'>Equity points: 2 (showing first/last 10)</p><div class='grid2'><div class='card mini'><h3>First 10</h3><div class='tablewrap'><table><thead><tr><th class='k'>Settlement</th><th class='n'>Profit</th><th class='n'>Equity</th></tr></thead><tbody><tr><td class='k'></td><td class='n'>0.00</td><td class='n'>0.00</td></tr><tr><td class='k'></td><td class='n'>0.00</td><td class='n'>0.00</td></tr></tbody></table></div></div><div class='card mini'><h3>Last 10</h3><div class='tablewrap'><table><thead><tr><th class='k'>Settlement</th><th class='n'>Profit</th><th class='n'>Equity</th></tr></thead><tbody><tr><td class='k'></td><td class='n'>0.00</td><td class='n'>0.00</td></tr><tr><td class='k'></td><td class='n'>0.00</td><td class='n'>0.00</td></tr></tbody></table></div></div></div>
+  </section>
 
-    <h3 style="margin:14px 0 10px; font-size:14px;">Rolling Windows</h3>
-    <div class="row" id="rolling"></div>
-
-    <div class="two">
-      <div>
-        <h3 style="margin:10px 0; font-size:14px;">By Sport</h3>
-        <div id="bySport"></div>
-      </div>
-      <div>
-        <h3 style="margin:10px 0; font-size:14px;">By Market</h3>
-        <div id="byMarket"></div>
-      </div>
-    </div>
-
-    <h3 style="margin:16px 0 10px; font-size:14px;">By Odds Bucket</h3>
-    <div id="byOdds"></div>
-
-    <div style="height:16px"></div>
-    <div class="mono" id="meta"></div>
-    <div style="height:10px"></div>
-    <div class="mono" id="debug"></div>
-  </main>
-
-<script>
-  const n = (x) => (typeof x === "number" && Number.isFinite(x)) ? x : 0;
-  const fmtPct = (x) => (typeof x === "number" && Number.isFinite(x)) ? (x*100).toFixed(2) + "%" : "—";
-  const fmtNum = (x, d=2) => (typeof x === "number" && Number.isFinite(x)) ? x.toFixed(d) : "—";
-  const fmtInt = (x) => (Number.isFinite(Number(x)) ? String(Number(x)) : "—");
-
-  function setStatus(text) { document.getElementById("status").textContent = text; }
-  function setDebug(text) { document.getElementById("debug").textContent = text || ""; }
-
-  function makeCard(k, v, small="") {
-    const el = document.createElement("div");
-    el.className = "card";
-    el.innerHTML = '<div class="k">'+k+'</div><div class="v">'+v+'</div>' + (small ? '<div class="small">'+small+'</div>' : '');
-    return el;
-  }
-
-  function makeTable(rows) {
-    if (!rows.length) return "<div class='card'>No data</div>";
-    let html = "<table><thead><tr><th>Key</th><th>Bets</th><th>W</th><th>L</th><th>P</th><th>Hit%</th><th>ROI</th><th>Profit</th><th>Stake</th></tr></thead><tbody>";
-    for (const r of rows) {
-      const bets = Number.isFinite(Number(r.bets)) ? Number(r.bets) : 0;
-      const wins = Number.isFinite(Number(r.wins)) ? Number(r.wins) : 0;
-      const losses = Number.isFinite(Number(r.losses)) ? Number(r.losses) : 0;
-      const pushes = Number.isFinite(Number(r.pushes)) ? Number(r.pushes) : 0;
-      const hit = (typeof r.hit_rate === "number" && Number.isFinite(r.hit_rate)) ? r.hit_rate : ((wins+losses)>0 ? (wins/(wins+losses)) : 0);
-      const roi = (typeof r.roi === "number" && Number.isFinite(r.roi)) ? r.roi : 0;
-      const profit = (typeof r.profit === "number" && Number.isFinite(r.profit)) ? r.profit : 0;
-      const stake = (typeof r.stake === "number" && Number.isFinite(r.stake)) ? r.stake : 0;
-
-      html += "<tr>" +
-        "<td class='mono'>"+String(r.key)+"</td>" +
-        "<td>"+bets+"</td>" +
-        "<td>"+wins+"</td>" +
-        "<td>"+losses+"</td>" +
-        "<td>"+pushes+"</td>" +
-        "<td>"+fmtPct(hit)+"</td>" +
-        "<td>"+fmtPct(roi)+"</td>" +
-        "<td>"+fmtNum(profit,2)+"</td>" +
-        "<td>"+fmtNum(stake,2)+"</td>" +
-      "</tr>";
-    }
-    html += "</tbody></table>";
-    return html;
-  }
-
-  async function run() {
-    try {
-      const summaryUrl = "./latest/analytics/summary_latest.json";
-      const rollingUrl = "./latest/analytics/rolling_windows_latest.json";
-      const oddsUrl = "./latest/analytics/by_odds_bucket_latest.json";
-
-      const [sRes, rRes, oRes] = await Promise.all([
-        fetch(summaryUrl, { cache: "no-store" }),
-        fetch(rollingUrl, { cache: "no-store" }),
-        fetch(oddsUrl, { cache: "no-store" }),
-      ]);
-
-      if (!sRes.ok) throw new Error("HTTP " + sRes.status + " fetching " + summaryUrl);
-      if (!rRes.ok) throw new Error("HTTP " + rRes.status + " fetching " + rollingUrl);
-      if (!oRes.ok) throw new Error("HTTP " + oRes.status + " fetching " + oddsUrl);
-
-      const summary = await sRes.json();
-      const rolling = await rRes.json();
-      const odds = await oRes.json();
-
-      setStatus("OK");
-
-      const cards = document.getElementById("cards");
-      const t = summary.totals || {};
-      cards.innerHTML = "";
-      cards.appendChild(makeCard("Total Bets", fmtInt(t.total_bets ?? 0)));
-      cards.appendChild(makeCard("Wins / Losses / Pushes", ${fmtInt(t.wins ?? 0)} /  / ));
-      cards.appendChild(makeCard("Hit Rate", fmtPct(t.hit_rate ?? 0)));
-      cards.appendChild(makeCard("ROI", fmtPct(t.roi ?? 0), Profit  on Stake ));
-
-      const rRow = document.getElementById("rolling");
-      rRow.innerHTML = "";
-      const w30 = rolling.rolling_30d || {};
-      const w90 = rolling.rolling_90d || {};
-      const w365 = rolling.rolling_365d || {};
-      rRow.appendChild(makeCard("Rolling 30d ROI", fmtPct(w30.roi ?? 0), Bets  · Profit ));
-      rRow.appendChild(makeCard("Rolling 90d ROI", fmtPct(w90.roi ?? 0), Bets  · Profit ));
-      rRow.appendChild(makeCard("Rolling 365d ROI", fmtPct(w365.roi ?? 0), Bets  · Profit ));
-      rRow.appendChild(makeCard("Window Anchor", (rolling.window_anchor_ts_utc || "—"), "Max timestamp in data"));
-
-      const sportRows = Object.entries(summary.by_sport || {}).map(([k,v]) => ({ key:k, ...(v||{}) }))
-        .sort((a,b)=> (n(b.bets)-n(a.bets)));
-      const marketRows = Object.entries(summary.by_market || {}).map(([k,v]) => ({ key:k, ...(v||{}) }))
-        .sort((a,b)=> (n(b.bets)-n(a.bets)));
-
-      document.getElementById("bySport").innerHTML = makeTable(sportRows);
-      document.getElementById("byMarket").innerHTML = makeTable(marketRows);
-
-      const oddsRows = Object.entries((odds.by_odds_bucket || {})).map(([k,v]) => ({ key:k, ...(v||{}) }))
-        .sort((a,b)=> String(a.key).localeCompare(String(b.key)));
-      document.getElementById("byOdds").innerHTML = makeTable(oddsRows);
-
-      document.getElementById("meta").innerHTML =
-        "run_ts_utc: <span class='mono'>" + (summary.run_ts_utc || "—") + "</span>" +
-        " &nbsp;·&nbsp; engine: <span class='mono'>" + (summary.engine || "—") + "</span>";
-
-      setDebug("");
-    } catch (e) {
-      setStatus("ERROR");
-      setDebug("Render error: " + (e?.message || e));
-      document.getElementById("bySport").innerHTML = "<div class='err'>Failed to render analytics.<br><span class='mono'>" + (e?.message || e) + "</span></div>";
-    }
-  }
-
-  run();
-</script>
+  <section class="card">
+    <h2>Notes</h2>
+    <ul>
+      <li>This page is static and reads only the published <code>latest/analytics/*.json</code> artifacts.</li>
+      <li>All numbers are derived from frozen bets only (no post-lock changes).</li>
+    </ul>
+  </section>
+</div>
 </body>
 </html>
