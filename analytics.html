@@ -56,12 +56,25 @@
 
     <div style="height:16px"></div>
     <div class="mono" id="meta"></div>
+    <div style="height:10px"></div>
+    <div class="mono" id="debug"></div>
   </main>
 
 <script>
-  const fmtPct = (x) => (typeof x === "number" ? (x*100).toFixed(2) + "%" : "—");
-  const fmtNum = (x, d=2) => (typeof x === "number" ? x.toFixed(d) : "—");
-  const fmtInt = (x) => (Number.isFinite(x) ? String(x) : "—");
+  const n = (x) => (typeof x === "number" && Number.isFinite(x)) ? x : 0;
+  const fmtPct = (x) => (typeof x === "number" && Number.isFinite(x)) ? (x*100).toFixed(2) + "%" : "—";
+  const fmtNum = (x, d=2) => (typeof x === "number" && Number.isFinite(x)) ? x.toFixed(d) : "—";
+  const fmtInt = (x) => (Number.isFinite(Number(x)) ? String(Number(x)) : "—");
+
+  function setStatus(text) {
+    const el = document.getElementById("status");
+    el.textContent = text;
+  }
+
+  function setDebug(text) {
+    const el = document.getElementById("debug");
+    el.textContent = text || "";
+  }
 
   function makeCard(k, v, small="") {
     const el = document.createElement("div");
@@ -72,18 +85,44 @@
 
   function makeTable(rows) {
     if (!rows.length) return "<div class='card'>No data</div>";
+    let htmlI = (x) => fmtInt(x);
     let html = "<table><thead><tr><th>Key</th><th>Bets</th><th>W</th><th>L</th><th>P</th><th>Hit%</th><th>ROI</th><th>Profit</th><th>Stake</th></tr></thead><tbody>";
     for (const r of rows) {
       html += "<tr>" +
-        "<td class='mono'>"+r.key+"</td>" +
-        "<td>"+fmtInt(r.bets)+"</td>" +
-        "<td>"+fmtInt(r.wins)+"</td>" +
-        "<td>"+fmtInt(r.losses)+"</td>" +
-        "<td>"+fmtInt(r.pushes)+"</td>" +
-        "<td>"+fmtPct(r.hit_rate)+"</td>" +
-        "<td>"+fmtPct(r.roi)+"</td>" +
-        "<td>"+fmtNum(r.profit,2)+"</td>" +
-        "<td>"+fmtNum(r.stake,2)+"</td>" +
+        "<td class='mono'>"+String(r.key)+"</td>" +
+        "<td>"+R(I(r.bets))+"</td>" +
+      "</tr>";
+    }
+    html += "</tbody></table>";
+    return html;
+
+    function I(x){ return Number.isFinite(Number(x)) ? Number(x) : 0; }
+    function R(x){ return String(x); }
+  }
+
+  function makeTable2(rows) {
+    if (!rows.length) return "<div class='card'>No data</div>";
+    let html = "<table><thead><tr><th>Key</th><th>Bets</th><th>W</th><th>L</th><th>P</th><th>Hit%</th><th>ROI</th><th>Profit</th><th>Stake</th></tr></thead><tbody>";
+    for (const r of rows) {
+      const bets = Number.isFinite(Number(r.bets)) ? Number(r.bets) : 0;
+      const wins = Number.isFinite(Number(r.wins)) ? Number(r.wins) : 0;
+      const losses = Number.isFinite(Number(r.losses)) ? Number(r.losses) : 0;
+      const pushes = Number.isFinite(Number(r.pushes)) ? Number(r.pushes) : 0;
+      const hit = (typeof r.hit_rate === "number" && Number.isFinite(r.hit_rate)) ? r.hit_rate : ((wins+losses)>0 ? (wins/(wins+losses)) : 0);
+      const roi = (typeof r.roi === "number" && Number.isFinite(r.roi)) ? r.roi : 0;
+      const profit = (typeof r.profit === "number" && Number.isFinite(r.profit)) ? r.profit : 0;
+      const stake = (typeof r.stake === "number" && Number.isFinite(r.stake)) ? r.stake : 0;
+
+      html += "<tr>" +
+        "<td class='mono'>"+String(r.key)+"</td>" +
+        "<td>"+bets+"</td>" +
+        "<td>"+wins+"</td>" +
+        "<td>"+losses+"</td>" +
+        "<td>"+pushes+"</td>" +
+        "<td>"+fmtPct(hit)+"</td>" +
+        "<td>"+fmtPct(roi)+"</td>" +
+        "<td>"+fmtNum(profit,2)+"</td>" +
+        "<td>"+fmtNum(stake,2)+"</td>" +
       "</tr>";
     }
     html += "</tbody></table>";
@@ -91,42 +130,44 @@
   }
 
   async function run() {
-    const status = document.getElementById("status");
     const cards = document.getElementById("cards");
     const bySport = document.getElementById("bySport");
     const byMarket = document.getElementById("byMarket");
     const meta = document.getElementById("meta");
 
     try {
-      const res = await fetch("./latest/analytics/summary_latest.json", { cache: "no-store" });
-      if (!res.ok) throw new Error("HTTP " + res.status + " fetching summary_latest.json");
+      const url = "./latest/analytics/summary_latest.json";
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status + " fetching " + url);
+
       const j = await res.json();
+      setStatus("OK");
 
       const t = j.totals || {};
-      status.textContent = "OK";
-      status.className = "pill";
 
       cards.appendChild(makeCard("Total Bets", fmtInt(t.total_bets ?? 0)));
-      cards.appendChild(makeCard("Wins / Losses / Pushes", ${fmtInt(t.wins ?? 0)} /  / ));
+      cards.appendChild(makeCard("Wins / Losses / Pushes", `${fmtInt(t.wins ?? 0)} / ${fmtInt(t.losses ?? 0)} / ${fmtInt(t.pushes ?? 0)}`));
       cards.appendChild(makeCard("Hit Rate", fmtPct(t.hit_rate ?? 0)));
-      cards.appendChild(makeCard("ROI", fmtPct(t.roi ?? 0), Profit  on Stake ));
+      cards.appendChild(makeCard("ROI", fmtPct(t.roi ?? 0), `Profit ${fmtNum(t.profit ?? 0,2)} on Stake ${fmtNum(t.stake ?? 0,2)}`));
 
-      // sort sport/market by bets desc
-      const sportRows = Object.entries(j.by_sport || {}).map(([k,v]) => ({ key:k, ...v })).sort((a,b)=> (b.bets||0)-(a.bets||0));
-      const marketRows = Object.entries(j.by_market || {}).map(([k,v]) => ({ key:k, ...v })).sort((a,b)=> (b.bets||0)-(a.bets||0));
+      const sportRows = Object.entries(j.by_sport || {}).map(([k,v]) => ({ key:k, ...(v||{}) }))
+        .sort((a,b)=> (n(b.bets)-n(a.bets)));
+      const marketRows = Object.entries(j.by_market || {}).map(([k,v]) => ({ key:k, ...(v||{}) }))
+        .sort((a,b)=> (n(b.bets)-n(a.bets)));
 
-      bySport.innerHTML = makeTable(sportRows);
-      byMarket.innerHTML = makeTable(marketRows);
+      bySport.innerHTML = makeTable2(sportRows);
+      byMarket.innerHTML = makeTable2(marketRows);
 
       meta.innerHTML =
         "run_ts_utc: <span class='mono'>" + (j.run_ts_utc || "—") + "</span>" +
         " &nbsp;·&nbsp; engine: <span class='mono'>" + (j.engine || "—") + "</span>";
+
+      setDebug("");
     } catch (e) {
-      status.textContent = "ERROR";
-      status.className = "pill";
-      cards.innerHTML = "";
-      bySport.innerHTML = "<div class='err'>Failed to load analytics summary.<br><span class='mono'>" + (e?.message || e) + "</span></div>";
-      byMarket.innerHTML = "";
+      setStatus("ERROR");
+      setDebug("Render error: " + (e?.message || e));
+      const bySport = document.getElementById("bySport");
+      bySport.innerHTML = "<div class='err'>Failed to render analytics.<br><span class='mono'>" + (e?.message || e) + "</span></div>";
     }
   }
 
