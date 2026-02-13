@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TRUEX Analytics</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 0; }
+    header { padding: 18px 20px; border-bottom: 1px solid rgba(127,127,127,.25); }
+    header h1 { margin: 0; font-size: 18px; font-weight: 650; }
+    header .sub { margin-top: 6px; font-size: 12px; opacity: .8; }
+    main { padding: 18px 20px; max-width: 1100px; }
+    .row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .card { border: 1px solid rgba(127,127,127,.25); border-radius: 12px; padding: 12px 12px; }
+    .k { font-size: 11px; opacity: .8; margin-bottom: 8px; }
+    .v { font-size: 20px; font-weight: 700; }
+    .small { font-size: 12px; opacity: .85; margin-top: 6px; }
+    table { width: 100%; border-collapse: collapse; border: 1px solid rgba(127,127,127,.25); border-radius: 12px; overflow: hidden; }
+    th, td { padding: 10px 10px; border-bottom: 1px solid rgba(127,127,127,.18); text-align: left; font-size: 13px; }
+    th { font-size: 12px; opacity: .85; }
+    tr:last-child td { border-bottom: none; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; opacity: .85; }
+    .err { padding: 12px; border: 1px solid rgba(255,80,80,.5); border-radius: 12px; }
+    .pill { display: inline-block; padding: 3px 8px; border: 1px solid rgba(127,127,127,.25); border-radius: 999px; font-size: 12px; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+    @media (max-width: 900px) { .row { grid-template-columns: repeat(2, minmax(0, 1fr)); } .two { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TRUEX — Analytics Summary</h1>
+    <div class="sub">
+      Deterministic summary derived from <span class="mono">latest/analytics/summary_latest.json</span>
+      &nbsp;·&nbsp; <a href="./" rel="noopener">Home</a>
+      &nbsp;·&nbsp; <a href="./latest/analytics/summary_latest.json" rel="noopener">Raw JSON</a>
+    </div>
+  </header>
+
+  <main>
+    <div id="status" class="pill">Loading…</div>
+    <div style="height:10px"></div>
+
+    <div class="row" id="cards"></div>
+
+    <div class="two">
+      <div>
+        <h3 style="margin:10px 0; font-size:14px;">By Sport</h3>
+        <div id="bySport"></div>
+      </div>
+      <div>
+        <h3 style="margin:10px 0; font-size:14px;">By Market</h3>
+        <div id="byMarket"></div>
+      </div>
+    </div>
+
+    <div style="height:16px"></div>
+    <div class="mono" id="meta"></div>
+  </main>
+
+<script>
+  const fmtPct = (x) => (typeof x === "number" ? (x*100).toFixed(2) + "%" : "—");
+  const fmtNum = (x, d=2) => (typeof x === "number" ? x.toFixed(d) : "—");
+  const fmtInt = (x) => (Number.isFinite(x) ? String(x) : "—");
+
+  function makeCard(k, v, small="") {
+    const el = document.createElement("div");
+    el.className = "card";
+    el.innerHTML = '<div class="k">'+k+'</div><div class="v">'+v+'</div>' + (small ? '<div class="small">'+small+'</div>' : '');
+    return el;
+  }
+
+  function makeTable(rows) {
+    if (!rows.length) return "<div class='card'>No data</div>";
+    let html = "<table><thead><tr><th>Key</th><th>Bets</th><th>W</th><th>L</th><th>P</th><th>Hit%</th><th>ROI</th><th>Profit</th><th>Stake</th></tr></thead><tbody>";
+    for (const r of rows) {
+      html += "<tr>" +
+        "<td class='mono'>"+r.key+"</td>" +
+        "<td>"+fmtInt(r.bets)+"</td>" +
+        "<td>"+fmtInt(r.wins)+"</td>" +
+        "<td>"+fmtInt(r.losses)+"</td>" +
+        "<td>"+fmtInt(r.pushes)+"</td>" +
+        "<td>"+fmtPct(r.hit_rate)+"</td>" +
+        "<td>"+fmtPct(r.roi)+"</td>" +
+        "<td>"+fmtNum(r.profit,2)+"</td>" +
+        "<td>"+fmtNum(r.stake,2)+"</td>" +
+      "</tr>";
+    }
+    html += "</tbody></table>";
+    return html;
+  }
+
+  async function run() {
+    const status = document.getElementById("status");
+    const cards = document.getElementById("cards");
+    const bySport = document.getElementById("bySport");
+    const byMarket = document.getElementById("byMarket");
+    const meta = document.getElementById("meta");
+
+    try {
+      const res = await fetch("./latest/analytics/summary_latest.json", { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status + " fetching summary_latest.json");
+      const j = await res.json();
+
+      const t = j.totals || {};
+      status.textContent = "OK";
+      status.className = "pill";
+
+      cards.appendChild(makeCard("Total Bets", fmtInt(t.total_bets ?? 0)));
+      cards.appendChild(makeCard("Wins / Losses / Pushes", ${fmtInt(t.wins ?? 0)} /  / ));
+      cards.appendChild(makeCard("Hit Rate", fmtPct(t.hit_rate ?? 0)));
+      cards.appendChild(makeCard("ROI", fmtPct(t.roi ?? 0), Profit  on Stake ));
+
+      // sort sport/market by bets desc
+      const sportRows = Object.entries(j.by_sport || {}).map(([k,v]) => ({ key:k, ...v })).sort((a,b)=> (b.bets||0)-(a.bets||0));
+      const marketRows = Object.entries(j.by_market || {}).map(([k,v]) => ({ key:k, ...v })).sort((a,b)=> (b.bets||0)-(a.bets||0));
+
+      bySport.innerHTML = makeTable(sportRows);
+      byMarket.innerHTML = makeTable(marketRows);
+
+      meta.innerHTML =
+        "run_ts_utc: <span class='mono'>" + (j.run_ts_utc || "—") + "</span>" +
+        " &nbsp;·&nbsp; engine: <span class='mono'>" + (j.engine || "—") + "</span>";
+    } catch (e) {
+      status.textContent = "ERROR";
+      status.className = "pill";
+      cards.innerHTML = "";
+      bySport.innerHTML = "<div class='err'>Failed to load analytics summary.<br><span class='mono'>" + (e?.message || e) + "</span></div>";
+      byMarket.innerHTML = "";
+    }
+  }
+
+  run();
+</script>
+</body>
+</html>
