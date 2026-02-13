@@ -1,0 +1,43 @@
+{
+  "by_market": {
+    "unknown": {
+      "bets": 2,
+      "hit_rate": 0.0,
+      "losses": 0,
+      "profit": 0.0,
+      "pushes": 0,
+      "roi": 0.0,
+      "stake": 2.0,
+      "wins": 0
+    }
+  },
+  "by_sport": {
+    "nfl": {
+      "bets": 2,
+      "hit_rate": 0.0,
+      "losses": 0,
+      "profit": 0.0,
+      "pushes": 0,
+      "roi": 0.0,
+      "stake": 2.0,
+      "wins": 0
+    }
+  },
+  "engine": "RUN_ANALYTICS_SUMMARY_v1",
+  "run_ts_utc": "2026-02-13T03:00:59Z",
+  "source": {
+    "bets_frozen": "C:\\TRUEX\\deploy\\public_site_latest\\latest\\bets\\bets_frozen_v2.json"
+  },
+  "totals": {
+    "avg_odds": -110.0,
+    "avg_stake": 1.0,
+    "hit_rate": 0.0,
+    "losses": 0,
+    "profit": 0.0,
+    "pushes": 0,
+    "roi": 0.0,
+    "stake": 2.0,
+    "total_bets": 2,
+    "wins": 0
+  }
+}
