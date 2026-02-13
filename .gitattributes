@@ -1,7 +1,18 @@
 # TRUEX line ending normalization (deterministic)
-# Enforce LF in payload artifacts to reduce churn + warnings.
-*.json text eol=lf
-*.md  text eol=lf
-*.html text eol=lf
-*.css text eol=lf
-*.js  text eol=lf
+# Force LF in payload artifacts to reduce churn + suppress CRLF warnings.
+* text=auto eol=lf
+
+*.json  text eol=lf
+*.md    text eol=lf
+*.html  text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+
+# Never modify these as text
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.zip  binary
