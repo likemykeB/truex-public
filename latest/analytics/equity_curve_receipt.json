@@ -1,6 +1,6 @@
 {
   "engine": "RUN_ANALYTICS_SUMMARY_v1",
   "equity_curve_path": "C:\\TRUEX\\deploy\\public_site_latest\\latest\\analytics\\equity_curve_latest.json",
-  "equity_curve_sha256": "c98bf902ca07728497ae075b436a3c89f871dd2381511d5ef4f4daa579f31d60",
-  "run_ts_utc": "2026-02-13T14:12:31Z"
+  "equity_curve_sha256": "bd9ccad34316be9a23526ec57710846b4422eaccee6db4284a51dcdf69df7939",
+  "run_ts_utc": "2026-02-13T14:16:56Z"
 }
