@@ -12,282 +12,83 @@
     .muted { color:#9aa4b2; margin: 6px 0; }
     .wrap { max-width: 1200px; margin: 0 auto; padding: 16px; }
     .card { background:#111826; border: 1px solid #1f2630; border-radius: 12px; padding: 14px; margin: 12px 0; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
-    .mini { padding: 12px; }
-    h2 { margin: 0 0 10px 0; font-size: 16px; }
-    h3 { margin: 0 0 10px 0; font-size: 14px; color:#c8d1db; }
     .meta { display:flex; gap:18px; flex-wrap: wrap; font-size: 12px; color:#c8d1db; }
     .label { color:#9aa4b2; margin-right:6px; }
-    .tablewrap { overflow:auto; border-radius: 10px; border:1px solid #1f2630; }
-    table { width: 100%; border-collapse: collapse; min-width: 860px; }
-    th, td { padding: 10px 10px; border-bottom: 1px solid #1f2630; }
-    th { text-align: left; font-size: 12px; color:#9aa4b2; background:#0f1520; position: sticky; top: 0; }
-    td { font-size: 13px; }
-    .k { width: 240px; }
-    .n { text-align: right; font-variant-numeric: tabular-nums; }
-    .grid2 { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media (max-width: 900px) { .grid2 { grid-template-columns: 1fr; } table { min-width: 760px; } }
     a { color:#8ab4ff; text-decoration: none; }
+    code { color:#c8d1db; }
   </style>
 </head>
 <body>
+
 <header>
   <div class="wrap">
     <h1>TRUEX Analytics</h1>
-    <div class="muted">Deterministic summary derived from public payload artifacts.</div>
-    <div class="meta">
-  <div><span class="label">Engine</span> RUN_ANALYTICS_SUMMARY_v1</div>
-  <div><span class="label">Run</span> 02/13/2026 15:08:05</div>
-  <div><span class="label">Source</span> C:\TRUEX\deploy\public_site_latest\latest\bets\bets_frozen_v2.json</div>
-</div>
-    <div class="muted">Artifacts: <a href="./latest/analytics/summary_latest.json">summary_latest.json</a> • <a href="./latest/analytics/rolling_windows_latest.json">rolling_windows_latest.json</a> • <a href="./latest/analytics/by_odds_bucket_latest.json">by_odds_bucket_latest.json</a> • <a href="./latest/analytics/by_model_id_latest.json">by_model_id_latest.json</a> • <a href="./latest/analytics/equity_curve_latest.json">equity_curve_latest.json</a></div>
+    <div class="muted">
+      Deterministic summary derived exclusively from published payload artifacts.
+    </div>
+
+    <div class="card">
+      <strong>Seal Metadata (Authoritative)</strong>
+      <div id="sealMeta" class="meta">
+        <div>Loading seal...</div>
+      </div>
+      <div class="muted">
+        Source: <a href="./latest/payload_seal.json">latest/payload_seal.json</a>
+      </div>
+    </div>
+
+    <div class="muted">
+      Artifacts:
+      <a href="./latest/analytics/summary_latest.json">summary_latest.json</a> •
+      <a href="./latest/analytics/rolling_windows_latest.json">rolling_windows_latest.json</a> •
+      <a href="./latest/analytics/by_odds_bucket_latest.json">by_odds_bucket_latest.json</a> •
+      <a href="./latest/analytics/by_model_id_latest.json">by_model_id_latest.json</a> •
+      <a href="./latest/analytics/equity_curve_latest.json">equity_curve_latest.json</a>
+    </div>
+
+    <div class="muted">
+      This page is a static UI shell. Authority comes from payload artifacts and the seal.
+    </div>
   </div>
 </header>
 
 <div class="wrap">
   <section class="card">
-  <h2>Totals</h2>
-  <div class="tablewrap">
-    <table>
-      <thead>
-        <tr>
-          <th class="k">Key</th>
-          <th class="n">Bets</th>
-          <th class="n">W</th>
-          <th class="n">L</th>
-          <th class="n">P</th>
-          <th class="n">Hit</th>
-          <th class="n">ROI</th>
-          <th class="n">Profit</th>
-          <th class="n">Stake</th>
-          <th class="n">AvgOdds</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-    <td class='k'>TOTAL</td>
-    <td class='n'>2</td>
-    <td class='n'>0</td>
-    <td class='n'>0</td>
-    <td class='n'>0</td>
-    <td class='n'>0.000000</td>
-    <td class='n'>0.000000</td>
-    <td class='n'>0.00</td>
-    <td class='n'>2.00</td>
-    <td class='n'>-110.00</td>
-  </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-  <section class="card">
-  <h2>By Sport</h2>
-  <div class="tablewrap">
-    <table>
-      <thead>
-        <tr>
-          <th class="k">Key</th>
-          <th class="n">Bets</th>
-          <th class="n">W</th>
-          <th class="n">L</th>
-          <th class="n">P</th>
-          <th class="n">Hit</th>
-          <th class="n">ROI</th>
-          <th class="n">Profit</th>
-          <th class="n">Stake</th>
-          <th class="n">AvgOdds</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-    <td class='k'>nfl</td>
-    <td class='n'>2</td>
-    <td class='n'>0</td>
-    <td class='n'>0</td>
-    <td class='n'>0</td>
-    <td class='n'>0.000000</td>
-    <td class='n'>0.000000</td>
-    <td class='n'>0.00</td>
-    <td class='n'>2.00</td>
-    <td class='n'>-110.00</td>
-  </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-  <section class="card">
-  <h2>By Market</h2>
-  <div class="tablewrap">
-    <table>
-      <thead>
-        <tr>
-          <th class="k">Key</th>
-          <th class="n">Bets</th>
-          <th class="n">W</th>
-          <th class="n">L</th>
-          <th class="n">P</th>
-          <th class="n">Hit</th>
-          <th class="n">ROI</th>
-          <th class="n">Profit</th>
-          <th class="n">Stake</th>
-          <th class="n">AvgOdds</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-    <td class='k'>unknown</td>
-    <td class='n'>2</td>
-    <td class='n'>0</td>
-    <td class='n'>0</td>
-    <td class='n'>0</td>
-    <td class='n'>0.000000</td>
-    <td class='n'>0.000000</td>
-    <td class='n'>0.00</td>
-    <td class='n'>2.00</td>
-    <td class='n'>-110.00</td>
-  </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-  <section class="card">
-  <h2>Rolling Windows</h2>
-  <p class="muted">Anchor: 02/13/2026 15:08:06</p>
-  <div class="tablewrap">
-    <table>
-      <thead>
-        <tr>
-          <th class="k">Window</th>
-          <th class="n">Bets</th>
-          <th class="n">W</th>
-          <th class="n">L</th>
-          <th class="n">P</th>
-          <th class="n">Hit</th>
-          <th class="n">ROI</th>
-          <th class="n">Profit</th>
-          <th class="n">Stake</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="k">30d</td>
-          <td class="n">0</td>
-          <td class="n">0</td>
-          <td class="n">0</td>
-          <td class="n">0</td>
-          <td class="n">0.000000</td>
-          <td class="n">0.000000</td>
-          <td class="n">0.00</td>
-          <td class="n">0.00</td>
-        </tr>
-        <tr>
-          <td class="k">90d</td>
-          <td class="n">0</td>
-          <td class="n">0</td>
-          <td class="n">0</td>
-          <td class="n">0</td>
-          <td class="n">0.000000</td>
-          <td class="n">0.000000</td>
-          <td class="n">0.00</td>
-          <td class="n">0.00</td>
-        </tr>
-        <tr>
-          <td class="k">365d</td>
-          <td class="n">0</td>
-          <td class="n">0</td>
-          <td class="n">0</td>
-          <td class="n">0</td>
-          <td class="n">0.000000</td>
-          <td class="n">0.000000</td>
-          <td class="n">0.00</td>
-          <td class="n">0.00</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-  <section class="card">
-  <h2>By Odds Bucket</h2>
-  <div class="tablewrap">
-    <table>
-      <thead>
-        <tr>
-          <th class="k">Key</th>
-          <th class="n">Bets</th>
-          <th class="n">W</th>
-          <th class="n">L</th>
-          <th class="n">P</th>
-          <th class="n">Hit</th>
-          <th class="n">ROI</th>
-          <th class="n">Profit</th>
-          <th class="n">Stake</th>
-          <th class="n">AvgOdds</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-    <td class='k'>[-150,-101]</td>
-    <td class='n'>2</td>
-    <td class='n'>0</td>
-    <td class='n'>0</td>
-    <td class='n'>0</td>
-    <td class='n'>0.000000</td>
-    <td class='n'>0.000000</td>
-    <td class='n'>0.00</td>
-    <td class='n'>2.00</td>
-    <td class='n'>-110.00</td>
-  </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-  <section class="card">
-  <h2>By Model ID</h2>
-  <div class="tablewrap">
-    <table>
-      <thead>
-        <tr>
-          <th class="k">Key</th>
-          <th class="n">Bets</th>
-          <th class="n">W</th>
-          <th class="n">L</th>
-          <th class="n">P</th>
-          <th class="n">Hit</th>
-          <th class="n">ROI</th>
-          <th class="n">Profit</th>
-          <th class="n">Stake</th>
-          <th class="n">AvgOdds</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-    <td class='k'>MODEL_ALPHA</td>
-    <td class='n'>2</td>
-    <td class='n'>0</td>
-    <td class='n'>0</td>
-    <td class='n'>0</td>
-    <td class='n'>0.000000</td>
-    <td class='n'>0.000000</td>
-    <td class='n'>0.00</td>
-    <td class='n'>2.00</td>
-    <td class='n'>-110.00</td>
-  </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-  <section class="card">
-    <h2>Equity Curve Preview</h2>
-    <p class='muted'>Equity points: 2 (showing first/last 10)</p><div class='grid2'><div class='card mini'><h3>First 10</h3><div class='tablewrap'><table><thead><tr><th class='k'>Settlement</th><th class='n'>Profit</th><th class='n'>Equity</th></tr></thead><tbody><tr><td class='k'></td><td class='n'>0.00</td><td class='n'>0.00</td></tr><tr><td class='k'></td><td class='n'>0.00</td><td class='n'>0.00</td></tr></tbody></table></div></div><div class='card mini'><h3>Last 10</h3><div class='tablewrap'><table><thead><tr><th class='k'>Settlement</th><th class='n'>Profit</th><th class='n'>Equity</th></tr></thead><tbody><tr><td class='k'></td><td class='n'>0.00</td><td class='n'>0.00</td></tr><tr><td class='k'></td><td class='n'>0.00</td><td class='n'>0.00</td></tr></tbody></table></div></div></div>
-  </section>
-
-  <section class="card">
-    <h2>Notes</h2>
+    <h2>Authority Notice</h2>
     <ul>
-      <li>This page is static and reads only the published <code>latest/analytics/*.json</code> artifacts.</li>
+      <li>This page reads only the published <code>latest/analytics/*.json</code> artifacts.</li>
       <li>All numbers are derived from frozen bets only (no post-lock changes).</li>
+      <li>If any artifact changes, the seal changes.</li>
     </ul>
   </section>
+
+  <!-- Keep the rest of your existing static analytics HTML below (tables/sections).
+       Your current analytics page is generated content; paste it below this line
+       OR keep it as-is if your publish runbook rewrites the body. -->
 </div>
+
+<script>
+fetch('./latest/payload_seal.json')
+  .then(r => r.json())
+  .then(seal => {
+    const el = document.getElementById('sealMeta');
+    const tree = seal.PayloadTreeHash ?? seal.payload_hash ?? 'N/A';
+    const base = seal.BaselineCommit ?? seal.baseline_commit ?? 'N/A';
+    const ts   = seal.RunTsUtc ?? seal.run_ts_utc ?? seal.RunUtc ?? 'N/A';
+    const fc   = seal.FileCount ?? seal.file_count ?? 'N/A';
+
+    el.innerHTML = `
+      <div><span class="label">PayloadTreeHash</span> ${tree}</div>
+      <div><span class="label">BaselineCommit</span> ${base}</div>
+      <div><span class="label">Run Timestamp</span> ${ts}</div>
+      <div><span class="label">File Count</span> ${fc}</div>
+    `;
+  })
+  .catch(() => {
+    document.getElementById('sealMeta').innerHTML =
+      '<div style="color:#ff6b6b;">Seal load failed</div>';
+  });
+</script>
+
 </body>
 </html>

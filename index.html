@@ -11,69 +11,75 @@
     .wrap { max-width: 1100px; margin: 0 auto; padding: 16px; }
     h1 { margin: 0 0 6px 0; font-size: 22px; }
     .muted { color:#9aa4b2; margin: 6px 0; }
-    .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
     .card { background:#111826; border: 1px solid #1f2630; border-radius: 12px; padding: 14px; margin: 12px 0; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
     h2 { margin: 0 0 10px 0; font-size: 16px; }
-    ul { margin: 8px 0 0 0; padding-left: 18px; }
+    ul, ol { margin: 8px 0 0 0; padding-left: 18px; }
     li { margin: 8px 0; }
     a { color:#8ab4ff; text-decoration: none; }
     code { color:#c8d1db; }
   </style>
 </head>
 <body>
+
 <header>
   <div class="wrap">
     <h1>TRUEX</h1>
-    <div class="muted">Deterministic betting performance verification — seals, receipts, and append-only governance.</div>
+    <div class="muted">
+      The Moody’s of betting performance: append-only logs + lock-time enforcement + deterministic payload + seals + acceptance tests.
+    </div>
   </div>
 </header>
 
 <div class="wrap">
 
-  <div class="grid">
-    <section class="card">
-      <h2>Product Pages</h2>
-      <ul>
-        <li><a href="./analytics.html">Analytics</a> (static summary page)</li>
-      </ul>
-      <div class="muted">Pages read only published payload artifacts.</div>
-    </section>
-
-    <section class="card">
-      <h2>Proof</h2>
-      <ul>
-        <li><a href="./latest/payload_seal.json">payload_seal.json</a></li>
-        <li><a href="./latest/analytics/summary_receipt.json">analytics receipt</a></li>
-        <li><a href="./latest/badges/badge_receipt.json">badge receipt</a></li>
-        <li><a href="./latest/bets/bet_ingest_receipt.json">bet ingest receipt</a></li>
-      </ul>
-      <div class="muted">Seals + receipts = auditability.</div>
-    </section>
-  </div>
-
   <section class="card">
-    <h2>Latest Payload (contract surface)</h2>
+    <h2>What TRUEX Verifies</h2>
     <ul>
-      <li><a href="./latest/bets/bets_frozen_v2.json">bets_frozen_v2.json</a></li>
-      <li><a href="./latest/badges/badges_latest.json">badges_latest.json</a></li>
-      <li><a href="./latest/analytics/summary_latest.json">analytics/summary_latest.json</a></li>
-      <li><a href="./latest/analytics/rolling_windows_latest.json">analytics/rolling_windows_latest.json</a></li>
-      <li><a href="./latest/analytics/by_odds_bucket_latest.json">analytics/by_odds_bucket_latest.json</a></li>
-      <li><a href="./latest/analytics/by_model_id_latest.json">analytics/by_model_id_latest.json</a></li>
-      <li><a href="./latest/analytics/equity_curve_latest.json">analytics/equity_curve_latest.json</a></li>
+      <li>Append-only bet logs</li>
+      <li>Lock-time enforcement (no post-lock submissions)</li>
+      <li>Frozen snapshots as the only public source of truth</li>
+      <li>Deterministic analytics derived from frozen bets</li>
+      <li>Payload seals (hash changes when any file changes)</li>
+      <li>Strict acceptance tests (fail-fast drift detection)</li>
     </ul>
   </section>
 
   <section class="card">
-    <h2>Notes</h2>
+    <h2>What TRUEX Refuses To Be</h2>
     <ul>
-      <li>No pick selling. No post-lock changes. No backfill.</li>
-      <li>All public numbers are derived from frozen bets and deterministic engines.</li>
-      <li>If a file changes, the seal changes — and acceptance will detect drift.</li>
+      <li>No pick selling</li>
+      <li>No backfill</li>
+      <li>No post-lock edits</li>
+      <li>No silent adjustments</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>How To Audit (Public)</h2>
+    <ol>
+      <li>Open the seal: <a href="./latest/payload_seal.json">latest/payload_seal.json</a></li>
+      <li>Inspect artifacts under <code>latest/</code></li>
+      <li>Recompute the payload hash locally if desired</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>Pages</h2>
+    <ul>
+      <li><a href="./analytics.html">Analytics</a></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Proof (Receipts)</h2>
+    <ul>
+      <li><a href="./latest/analytics/summary_receipt.json">analytics receipt</a></li>
+      <li><a href="./latest/badges/badge_receipt.json">badge receipt</a></li>
+      <li><a href="./latest/bets/bet_ingest_receipt.json">bet ingest receipt</a></li>
     </ul>
   </section>
 
 </div>
+
 </body>
 </html>
