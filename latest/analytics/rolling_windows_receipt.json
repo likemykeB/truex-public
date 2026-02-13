@@ -2,6 +2,6 @@
   "engine": "RUN_ANALYTICS_SUMMARY_v1",
   "input_sha256": "32a206ba3c610e252298edfd7800e6ab63ee5dced0a9935e4a1fc0092f51c1dc",
   "output": "C:\\TRUEX\\deploy\\public_site_latest\\latest\\analytics\\rolling_windows_latest.json",
-  "output_sha256": "ef28f6d4b1af982628b8d8673d8a15c5a739a9c6c15426860817e4185d2e9da0",
-  "run_ts_utc": "2026-02-13T19:45:24Z"
+  "output_sha256": "a272fdde9b465dbb9acd36d5b794d07e23a07c8fff7e236f78ba07748d354f43",
+  "run_ts_utc": "2026-02-13T20:46:38Z"
 }
