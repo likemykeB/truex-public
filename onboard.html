@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Get Verified on TRUEX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+    h1 { margin-bottom: 10px; }
+    h2 { margin-top: 34px; }
+    .muted { color: #666; }
+    .box {
+      border: 1px solid #eee;
+      padding: 14px 16px;
+      background: #fafafa;
+      margin: 14px 0;
+    }
+    code { background: #f4f4f4; padding: 2px 5px; }
+    pre { background: #f4f4f4; padding: 12px; overflow-x: auto; }
+    .checklist li { margin: 6px 0; }
+    .cta {
+      margin-top: 20px;
+      padding: 14px 16px;
+      border-left: 4px solid #000;
+      background: #fff;
+    }
+    a { color: #000; }
+  </style>
+</head>
+<body>
+
+  <h1>Get Verified on TRUEX</h1>
+  <p class="muted">
+    TRUEX is a public betting record verification engine. Append-only. Lock-time enforced. No edits.
+  </p>
+
+  <div class="box">
+    <strong>Who this is for:</strong><br />
+    Serious bettors who want a public, verifiable record — not a picks marketplace, not a feed, not a hype page.
+  </div>
+
+  <h2>What you get</h2>
+  <ul>
+    <li>A public verified profile page (shareable link)</li>
+    <li>Immutable performance stats (units, ROI, win rate, drawdowns, sport splits)</li>
+    <li>A TRUEX Verified badge you can embed anywhere</li>
+    <li>Raw analytics JSON for transparency</li>
+  </ul>
+
+  <h2>What TRUEX is not</h2>
+  <ul>
+    <li>No picks selling</li>
+    <li>No deleting losses</li>
+    <li>No backfilling old bets</li>
+    <li>No social feed / comments / ranking ladder</li>
+  </ul>
+
+  <h2>How verification works</h2>
+  <ol>
+    <li>You submit bets in a CSV format</li>
+    <li>Bets must be submitted before event start (lock-time enforced)</li>
+    <li>Approved bets become part of a permanent public record</li>
+    <li>Your profile updates on scheduled verification cycles</li>
+  </ol>
+
+  <h2>Submission checklist</h2>
+  <ul class="checklist">
+    <li>✅ Use UTC timestamps (ISO format like <code>2025-10-01T17:05:00Z</code>)</li>
+    <li>✅ Include odds and stake for every bet</li>
+    <li>✅ One row per bet (no multi-legs unless labeled clearly)</li>
+    <li>✅ Submit before event start time</li>
+    <li>✅ Username must match exactly across submissions</li>
+  </ul>
+
+  <h2>CSV format</h2>
+  <pre>username,sport,event,market,selection,odds,stake,timestamp_utc</pre>
+
+  <p>Example:</p>
+  <pre>sampleuser,NFL,SEA vs NE,Spread,NE -5,-110,1.0,2025-10-01T17:05:00Z</pre>
+
+  <div class="cta">
+    <strong>Submit here:</strong><br />
+    Email your CSV to <strong>submissions@true-x.io</strong><br />
+    <span class="muted">Full rules are on the submission guide: <a href="./submit.html">submit.html</a></span>
+  </div>
+
+  <h2>See it live</h2>
+  <ul>
+    <li>Verified index: <a href="./verified/index.html">/verified/index.html</a></li>
+    <li>Sample profile: <a href="./verified/profile/?u=sampleuser">/verified/profile/?u=sampleuser</a></li>
+  </ul>
+
+  <p class="muted" style="margin-top:50px;">
+    TRUEX — Public. Deterministic. Immutable.
+  </p>
+
+</body>
+</html>
