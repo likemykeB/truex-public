@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About TRUEX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="./assets/styles.css" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.65;
+    }
+    h1 { margin-bottom: 10px; }
+    h2 { margin-top: 40px; }
+    .muted { color: #666; }
+    .box {
+      border: 1px solid #eee;
+      padding: 14px 16px;
+      background: #fafafa;
+      margin: 14px 0;
+    }
+    .callout {
+      border-left: 4px solid #000;
+      padding: 12px 14px;
+      background: #fff;
+      margin: 16px 0;
+    }
+    ul li { margin: 6px 0; }
+    a { color: #000; }
+    code { background: #f4f4f4; padding: 2px 5px; }
+    footer {
+      margin-top: 60px;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>About TRUEX</h1>
+  <p class="muted">
+    TRUEX is a public betting record verification engine.
+    It exists to make “proof” normal.
+  </p>
+
+  <div class="callout">
+    <strong>TRUEX verifies records.</strong><br />
+    It does not sell picks. It does not run a feed. It does not allow edits.
+  </div>
+
+  <h2>What TRUEX is</h2>
+  <ul>
+    <li><strong>Public verification</strong> for bettors who want credibility</li>
+    <li><strong>Append-only logging</strong> — bets can be added, not edited</li>
+    <li><strong>Lock-time enforced</strong> — no post-start submissions</li>
+    <li><strong>Deterministic publishing</strong> — outputs are reproducible and sealed</li>
+    <li><strong>Transparent artifacts</strong> — raw analytics JSON + verification metadata</li>
+  </ul>
+
+  <h2>What TRUEX is not</h2>
+  <ul>
+    <li>Not a picks marketplace</li>
+    <li>Not a social betting app</li>
+    <li>Not an influencer platform</li>
+    <li>Not a comment or ranking feed</li>
+    <li>Not a place to backfill wins</li>
+  </ul>
+
+  <h2>How verification works</h2>
+  <ol>
+    <li>You submit bets in CSV format (units, odds, timestamp)</li>
+    <li>TRUEX enforces lock-time rules (must be before event start)</li>
+    <li>Accepted bets are frozen into an immutable record</li>
+    <li>Analytics are computed and published with seal metadata</li>
+    <li>Your verified profile is publicly viewable and shareable</li>
+  </ol>
+
+  <div class="box">
+    <strong>What becomes public on your profile:</strong>
+    <ul>
+      <li>Total units, ROI, win rate</li>
+      <li>Max drawdown and equity curve</li>
+      <li>Sport breakdown</li>
+      <li>CLV (if available)</li>
+      <li>PayloadTreeHash + SealSha256 verification metadata</li>
+      <li>Link to raw analytics JSON</li>
+    </ul>
+  </div>
+
+  <h2>Where to start</h2>
+  <ul>
+    <li><strong>See verified bettors:</strong> <a href="./verified/index.html">Verified Index</a></li>
+    <li><strong>Get verified:</strong> <a href="./onboard.html">Onboarding</a></li>
+    <li><strong>Submit bets:</strong> <a href="./submit.html">Submission Guide</a></li>
+    <li><strong>Learn how to interpret records:</strong> <a href="./education.html">Education</a></li>
+  </ul>
+
+  <div class="callout">
+    <strong>Core principle:</strong><br />
+    If it can be edited, it can’t be trusted.
+  </div>
+
+  <footer>
+    TRUEX — Public. Deterministic. Immutable.
+  </footer>
+
+</body>
+</html>
