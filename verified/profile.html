@@ -20,30 +20,34 @@
       padding: 0 20px;
     }
 
-    section {
-      margin-top: 40px;
-    }
+    section { margin-top: 40px; }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
+    table { width: 100%; border-collapse: collapse; }
 
-    td, th {
-      padding: 8px;
-      border-bottom: 1px solid #ddd;
-    }
+    td, th { padding: 8px; border-bottom: 1px solid #ddd; }
 
-    canvas {
-      border: 1px solid #eee;
+    canvas { border: 1px solid #eee; }
+
+    .error-box {
+      margin-top: 20px;
+      padding: 12px;
+      border-left: 4px solid #d32f2f;
+      background: #fdecea;
+      color: #222;
+      display: none;
+      white-space: pre-wrap;
+      font-family: Consolas, monospace;
+      font-size: 12px;
     }
   </style>
 </head>
 
-<body>
+<body onload="loadProfileDynamic()">
 
   <h1 id="username"></h1>
   <p id="verified-since"></p>
+
+  <div id="error-box" class="error-box"></div>
 
   <!-- BADGE -->
   <div class="badge-section">
