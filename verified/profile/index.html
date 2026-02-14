@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TRUEX Verified Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="../../assets/badge.css" />
+
+  <script defer src="../../assets/charts.js"></script>
+  <script defer src="../../assets/profile_renderer.js"></script>
+  <script defer src="../../assets/badge.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    section { margin-top: 40px; }
+    table { width: 100%; border-collapse: collapse; }
+    td, th { padding: 8px; border-bottom: 1px solid #ddd; }
+    canvas { border: 1px solid #eee; }
+
+    .error-box {
+      margin-top: 14px;
+      padding: 12px;
+      border-left: 4px solid #d32f2f;
+      background: #fdecea;
+      color: #222;
+      display: none;
+      white-space: pre-wrap;
+      font-family: Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .heartbeat {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="heartbeat" id="hb">HB: page loaded (waiting for renderer...)</div>
+  <div id="error-box" class="error-box"></div>
+
+  <h1 id="username"></h1>
+  <p id="verified-since"></p>
+
+  <!-- BADGE -->
+  <div class="badge-section">
+    <h2>TRUEX Verified Badge</h2>
+
+    <div class="badge-preview" id="badge-preview"></div>
+
+    <p>Embed this on your site or bio:</p>
+    <textarea id="badge-embed-code" readonly></textarea>
+    <br />
+    <button id="copy-btn" onclick="copyBadge()">Copy Embed Code</button>
+  </div>
+
+  <section>
+    <h2>Overall Performance</h2>
+    <table>
+      <tr><td>Total Units</td><td id="total-units"></td></tr>
+      <tr><td>ROI</td><td id="roi"></td></tr>
+      <tr><td>Win Rate</td><td id="win-rate"></td></tr>
+      <tr><td>CLV</td><td id="clv"></td></tr>
+      <tr><td>Max Drawdown</td><td id="max-dd"></td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Equity Curve</h2>
+    <canvas id="equityChart" width="900" height="300"></canvas>
+  </section>
+
+  <section>
+    <h2>Monthly P&L</h2>
+    <canvas id="monthlyChart" width="900" height="300"></canvas>
+  </section>
+
+  <section>
+    <h2>Sport Breakdown</h2>
+    <table id="sport-breakdown">
+      <thead>
+        <tr>
+          <th>Sport</th>
+          <th>Units</th>
+          <th>ROI</th>
+          <th>Win %</th>
+          <th>CLV</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Verification</h2>
+    <p id="seal"></p>
+    <p><a id="payload-link" target="_blank">View Raw Analytics JSON</a></p>
+  </section>
+
+  <script>
+    window.addEventListener("load", () => {
+      const hb = document.getElementById("hb");
+      hb.textContent = "HB: window load fired";
+
+      if (typeof loadProfileDynamic !== "function") {
+        hb.textContent = "HB: ERROR — loadProfileDynamic not found";
+        const box = document.getElementById("error-box");
+        box.style.display = "block";
+        box.textContent = "profile_renderer.js did not load or did not define loadProfileDynamic().";
+        return;
+      }
+
+      hb.textContent = "HB: renderer found — loading profile...";
+      loadProfileDynamic();
+    });
+  </script>
+
+</body>
+</html>

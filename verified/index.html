@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link rel="stylesheet" href="../assets/styles.css" />
-  <script defer src="../assets/profile_renderer.js"></script>
 
   <style>
     body {
@@ -58,7 +57,7 @@
           <td>${user.roi}</td>
           <td>${(user.sports || []).join(", ")}</td>
           <td>${user.verified_since}</td>
-          <td><a href="profile.html?u=${encodeURIComponent(user.username)}">View</a></td>
+          <td><a href="profile/?u=${encodeURIComponent(user.username)}">View</a></td>
         `;
         tbody.appendChild(row);
       });
@@ -86,9 +85,7 @@
         <th>Profile</th>
       </tr>
     </thead>
-    <tbody>
-      <!-- Filled dynamically -->
-    </tbody>
+    <tbody></tbody>
   </table>
 
   <footer>

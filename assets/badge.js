@@ -1,11 +1,10 @@
 function sanitizeProfileUrl(urlStr) {
   try {
     const url = new URL(urlStr);
-    // Remove cache-bust params like v=
     url.searchParams.delete("v");
     return url.toString();
   } catch (e) {
-    return urlStr; // fallback
+    return urlStr;
   }
 }
 
