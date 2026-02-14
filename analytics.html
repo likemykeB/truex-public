@@ -39,10 +39,10 @@
 
     <div class="muted">
       Artifacts:
-      <a href="./latest/analytics/summary_latest.json">summary_latest.json</a> •
-      <a href="./latest/analytics/rolling_windows_latest.json">rolling_windows_latest.json</a> •
-      <a href="./latest/analytics/by_odds_bucket_latest.json">by_odds_bucket_latest.json</a> •
-      <a href="./latest/analytics/by_model_id_latest.json">by_model_id_latest.json</a> •
+      <a href="./latest/analytics/summary_latest.json">summary_latest.json</a> &bull;
+      <a href="./latest/analytics/rolling_windows_latest.json">rolling_windows_latest.json</a> &bull;
+      <a href="./latest/analytics/by_odds_bucket_latest.json">by_odds_bucket_latest.json</a> &bull;
+      <a href="./latest/analytics/by_model_id_latest.json">by_model_id_latest.json</a> &bull;
       <a href="./latest/analytics/equity_curve_latest.json">equity_curve_latest.json</a>
     </div>
 
@@ -61,10 +61,6 @@
       <li>If any artifact changes, the seal changes.</li>
     </ul>
   </section>
-
-  <!-- Keep the rest of your existing static analytics HTML below (tables/sections).
-       Your current analytics page is generated content; paste it below this line
-       OR keep it as-is if your publish runbook rewrites the body. -->
 </div>
 
 <script>
@@ -72,10 +68,10 @@ fetch('./latest/payload_seal.json')
   .then(r => r.json())
   .then(seal => {
     const el = document.getElementById('sealMeta');
-    const tree = seal.PayloadTreeHash ?? seal.payload_hash ?? 'N/A';
-    const base = seal.BaselineCommit ?? seal.baseline_commit ?? 'N/A';
-    const ts   = seal.RunTsUtc ?? seal.run_ts_utc ?? seal.RunUtc ?? 'N/A';
-    const fc   = seal.FileCount ?? seal.file_count ?? 'N/A';
+    const tree = (seal.PayloadTreeHash ?? seal.payload_hash ?? 'N/A');
+    const base = (seal.BaselineCommit ?? seal.baseline_commit ?? 'N/A');
+    const ts   = (seal.RunTsUtc ?? seal.run_ts_utc ?? seal.RunUtc ?? 'N/A');
+    const fc   = (seal.FileCount ?? seal.file_count ?? 'N/A');
 
     el.innerHTML = `
       <div><span class="label">PayloadTreeHash</span> ${tree}</div>
