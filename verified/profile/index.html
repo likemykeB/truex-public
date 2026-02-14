@@ -11,7 +11,8 @@
     .muted { color:#555; font-size:14px; }
     .profile-box { margin-top:20px; padding:16px; border:1px solid #ddd; border-radius:10px; }
     .badge { display:inline-block; padding:10px 14px; border:1px solid #000; background:#fff; font-size:14px; }
-    code { font-size:12px; }
+    code { font-size:12px; word-break:break-all; }
+    .section { margin-top:40px; padding:16px; border:1px solid #ddd; border-radius:10px; }
   </style>
 </head>
 <body>
@@ -26,6 +27,22 @@
 
     <!-- REAL SEAL RENDERS HERE -->
     <div id="seal-container" style="margin-top:30px;"></div>
+
+    <!-- HOW TO VERIFY SECTION -->
+    <div class="section">
+      <h3>How to Verify This Profile</h3>
+      <ol style="font-size:14px; line-height:1.6; padding-left:18px;">
+        <li>Download the full contents of the <code>/latest</code> directory from the public site.</li>
+        <li>Exclude <code>payload_seal.json</code> from the hash calculation.</li>
+        <li>Sort file paths deterministically (lowercase, forward-slash, ordinal order).</li>
+        <li>Recompute a SHA-256 tree hash across all remaining files.</li>
+        <li>Confirm the result matches the displayed <b>PayloadTreeHash</b> above.</li>
+      </ol>
+      <p style="margin-top:12px; font-size:13px; color:#555;">
+        If the recomputed hash matches, the published artifacts were not altered after seal generation.
+        TRUEX enforces append-only logging and lock-time validation.
+      </p>
+    </div>
   </div>
 
   <script>
