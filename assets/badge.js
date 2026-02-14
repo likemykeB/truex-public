@@ -1,11 +1,22 @@
-function generateBadge(username) {
-  const profileUrl = window.location.href;
+function sanitizeProfileUrl(urlStr) {
+  try {
+    const url = new URL(urlStr);
+    // Remove cache-bust params like v=
+    url.searchParams.delete("v");
+    return url.toString();
+  } catch (e) {
+    return urlStr; // fallback
+  }
+}
 
-  document.getElementById("badge-preview").innerText =
-    "TRUEX Verified — " + username;
+function generateBadge(username) {
+  const profileUrlClean = sanitizeProfileUrl(window.location.href);
+
+  const preview = document.getElementById("badge-preview");
+  if (preview) preview.innerText = "TRUEX Verified — " + username;
 
   const embedCode = `
-<a href="${profileUrl}" target="_blank" style="text-decoration:none;">
+<a href="${profileUrlClean}" target="_blank" style="text-decoration:none;">
   <div style="
     display:inline-block;
     padding:10px 14px;
@@ -18,13 +29,21 @@ function generateBadge(username) {
   </div>
 </a>`.trim();
 
-  document.getElementById("badge-embed-code").value = embedCode;
+  const ta = document.getElementById("badge-embed-code");
+  if (ta) ta.value = embedCode;
+
+  const btn = document.getElementById("copy-btn");
+  if (btn) btn.innerText = "Copy Embed Code";
 }
 
 function copyBadge() {
   const textarea = document.getElementById("badge-embed-code");
+  if (!textarea) return;
+
   textarea.select();
+  textarea.setSelectionRange(0, 99999);
   document.execCommand("copy");
 
-  document.getElementById("copy-btn").innerText = "Copied ✓";
+  const btn = document.getElementById("copy-btn");
+  if (btn) btn.innerText = "Copied ✓";
 }
