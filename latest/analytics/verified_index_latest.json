@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-02-14T00:00:00Z",
+  "users": [
+    {
+      "username": "sampleuser",
+      "total_units": 24.6,
+      "roi": "12.4%",
+      "sports": ["NFL", "NBA"],
+      "verified_since": "2025-10-01"
+    }
+  ]
+}

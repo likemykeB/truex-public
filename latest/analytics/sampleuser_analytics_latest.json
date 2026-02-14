@@ -1,0 +1,29 @@
+{
+  "username": "sampleuser",
+  "verified_since": "2025-10-01",
+  "total_units": 24.6,
+  "roi": "12.4%",
+  "win_rate": "54.2%",
+  "clv": "+1.8%",
+  "max_drawdown": "-8.2%",
+  "payload_tree_hash": "DEMO_HASH",
+  "seal_sha256": "DEMO_SEAL",
+  "equity_curve": [0, 2, 5, 3, 8, 10, 15, 18, 24.6],
+  "monthly_pnl": [2, 3, -1, 4, 5, 11.6],
+  "sport_breakdown": [
+    {
+      "name": "NFL",
+      "units": 15.2,
+      "roi": "10.1%",
+      "win_rate": "53%",
+      "clv": "+1.2%"
+    },
+    {
+      "name": "NBA",
+      "units": 9.4,
+      "roi": "15.8%",
+      "win_rate": "56%",
+      "clv": "+2.3%"
+    }
+  ]
+}
