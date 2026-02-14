@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>TRUEX Verified - sampleuser</title>
+  <title>TRUEX Verified Profile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link rel="stylesheet" href="../assets/styles.css" />
@@ -40,23 +40,19 @@
   </style>
 </head>
 
-<body onload="loadProfile('sampleuser'); generateBadge('sampleuser');">
+<body>
 
   <h1 id="username"></h1>
   <p id="verified-since"></p>
 
-  <!-- BADGE SECTION -->
+  <!-- BADGE -->
   <div class="badge-section">
     <h2>TRUEX Verified Badge</h2>
 
-    <div class="badge-preview">
-      TRUEX Verified — sampleuser
-    </div>
+    <div class="badge-preview" id="badge-preview"></div>
 
     <p>Embed this on your site or bio:</p>
-
     <textarea id="badge-embed-code" readonly></textarea>
-
     <br />
     <button id="copy-btn" onclick="copyBadge()">Copy Embed Code</button>
   </div>

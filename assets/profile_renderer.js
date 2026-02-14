@@ -1,10 +1,23 @@
+function getUsernameFromQuery() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("u");
+}
+
 async function fetchAnalytics(username) {
   const response = await fetch(`../latest/analytics/${username}_analytics_latest.json`);
   return await response.json();
 }
 
-function loadProfile(username) {
+function loadProfileDynamic() {
+  const username = getUsernameFromQuery();
+
+  if (!username) {
+    document.body.innerHTML = "<h2>No user specified.</h2>";
+    return;
+  }
+
   fetchAnalytics(username).then(data => {
+
     document.getElementById("username").innerText = data.username;
     document.getElementById("verified-since").innerText =
       "Verified Since: " + data.verified_since;
@@ -26,6 +39,8 @@ function loadProfile(username) {
     renderLineChart("monthlyChart", data.monthly_pnl);
 
     const table = document.querySelector("#sport-breakdown tbody");
+    table.innerHTML = "";
+
     data.sport_breakdown.forEach(sport => {
       const row = document.createElement("tr");
       row.innerHTML = `
@@ -37,26 +52,7 @@ function loadProfile(username) {
       `;
       table.appendChild(row);
     });
+
+    generateBadge(username);
   });
-}
-
-function loadIndex() {
-  fetch("../latest/analytics/verified_index_latest.json")
-    .then(res => res.json())
-    .then(data => {
-      const tbody = document.querySelector("#verified-table tbody");
-
-      data.users.forEach(user => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${user.username}</td>
-          <td>${user.total_units}</td>
-          <td>${user.roi}</td>
-          <td>${user.sports.join(", ")}</td>
-          <td>${user.verified_since}</td>
-          <td><a href="${user.username}.html">View</a></td>
-        `;
-        tbody.appendChild(row);
-      });
-    });
 }

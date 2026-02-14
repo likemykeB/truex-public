@@ -1,6 +1,9 @@
 function generateBadge(username) {
   const profileUrl = window.location.href;
 
+  document.getElementById("badge-preview").innerText =
+    "TRUEX Verified — " + username;
+
   const embedCode = `
 <a href="${profileUrl}" target="_blank" style="text-decoration:none;">
   <div style="
@@ -21,9 +24,7 @@ function generateBadge(username) {
 function copyBadge() {
   const textarea = document.getElementById("badge-embed-code");
   textarea.select();
-  textarea.setSelectionRange(0, 99999);
   document.execCommand("copy");
 
-  const btn = document.getElementById("copy-btn");
-  btn.innerText = "Copied ✓";
+  document.getElementById("copy-btn").innerText = "Copied ✓";
 }
