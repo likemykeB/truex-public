@@ -1,85 +1,371 @@
-<!doctype html>
+<!--
+FULL SWAP FILE
+Path: C:\TRUEX\deploy\public_site_latest\index.html
+TRUEX — Root Home (Static)
+-->
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TRUEX</title>
+  <title>TRUEX — Verified Betting Records</title>
+  <meta name="description" content="TRUEX is a public betting record verification engine. Append-only. Lock-time enforced. Deterministic. Immutable." />
   <style>
-    :root { color-scheme: dark; }
-    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#0b0f14; color:#e6edf3; }
-    header { padding: 22px 18px; border-bottom: 1px solid #1f2630; background:#0b0f14; }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 16px; }
-    h1 { margin: 0 0 6px 0; font-size: 22px; }
-    .muted { color:#9aa4b2; margin: 6px 0; }
-    .card { background:#111826; border: 1px solid #1f2630; border-radius: 12px; padding: 14px; margin: 12px 0; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
-    h2 { margin: 0 0 10px 0; font-size: 16px; }
-    ul, ol { margin: 8px 0 0 0; padding-left: 18px; }
-    li { margin: 8px 0; }
-    a { color:#8ab4ff; text-decoration: none; }
-    code { color:#c8d1db; }
+    :root{
+      --text:#111;
+      --muted:#666;
+      --border:#e6e6e6;
+      --bg:#ffffff;
+      --card:#fafafa;
+      --accent:#111;
+      --soft:#f6f6f6;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.45;
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 10px 0 18px;
+      border-bottom:1px solid var(--border);
+      margin-bottom: 22px;
+    }
+    .brand{
+      display:flex;
+      align-items:baseline;
+      gap:10px;
+      text-decoration:none;
+      color:inherit;
+    }
+    .brand .logo{
+      font-weight:800;
+      letter-spacing:0.5px;
+      font-size:20px;
+    }
+    .brand .tag{
+      color:var(--muted);
+      font-size:13px;
+    }
+    nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 14px;
+      font-size:14px;
+    }
+    nav a{
+      color:var(--text);
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+      padding-bottom:2px;
+    }
+    nav a:hover{ border-bottom-color: var(--text); }
+
+    .hero{
+      padding: 10px 0 8px;
+    }
+    .hero h1{
+      font-size: 42px;
+      line-height: 1.1;
+      margin: 10px 0 12px;
+      letter-spacing: -0.2px;
+    }
+    .hero p{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 70ch;
+    }
+    .pillrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin: 14px 0 18px;
+    }
+    .pill{
+      background: var(--soft);
+      border: 1px solid var(--border);
+      color: #222;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .ctaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin: 16px 0 22px;
+    }
+    .btn{
+      display:inline-block;
+      padding: 10px 14px;
+      border: 1px solid var(--text);
+      background: var(--text);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration:none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .btn.secondary{
+      background: #fff;
+      color: var(--text);
+    }
+    .btn.ghost{
+      background: var(--soft);
+      border-color: var(--border);
+      color: var(--text);
+      font-weight: 600;
+    }
+    .btn:hover{ opacity:0.92; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+      margin-top: 10px;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+      .hero h1{ font-size: 34px; }
+    }
+
+    .card{
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size: 18px;
+      letter-spacing:-0.1px;
+    }
+    .card p{ margin: 0 0 10px; color: var(--muted); }
+    .card ul{
+      margin: 10px 0 0 18px;
+      color: #222;
+    }
+    .card li{ margin: 6px 0; }
+    .mini{
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .badgeBox{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 10px;
+    }
+    .badgePreview{
+      display:inline-block;
+      border:1px solid #111;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      background:#fff;
+      margin-bottom: 10px;
+    }
+    .code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      background: #f3f3f3;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      overflow:auto;
+      white-space: pre;
+      margin: 10px 0 8px;
+    }
+    .copyBtn{
+      display:inline-block;
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor: pointer;
+    }
+    .copyBtn:hover{ background:#f7f7f7; }
+
+    .callout{
+      border-left: 4px solid #111;
+      padding: 10px 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left-width: 4px;
+      border-radius: 10px;
+      margin-top: 14px;
+    }
+    .callout strong{ display:block; margin-bottom:4px; }
+
+    .footer{
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top:1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .footer a{ color: var(--muted); text-decoration:none; border-bottom:1px solid transparent; }
+    .footer a:hover{ border-bottom-color: var(--muted); }
   </style>
 </head>
 <body>
-
-<header>
   <div class="wrap">
-    <h1>TRUEX</h1>
-    <div class="muted">
-      The Moody’s of betting performance: append-only logs + lock-time enforcement + deterministic payload + seals + acceptance tests.
+    <div class="topbar">
+      <a class="brand" href="./index.html">
+        <div class="logo">TRUEX</div>
+        <div class="tag">Verified betting records</div>
+      </a>
+      <nav>
+        <a href="./about.html">About</a>
+        <a href="./verified/index.html">Verified</a>
+        <a href="./onboard.html">Get Verified</a>
+        <a href="./submit.html">Submit</a>
+        <a href="./education.html">Education</a>
+      </nav>
+    </div>
+
+    <section class="hero">
+      <h1>Proof for bettors.</h1>
+      <p>
+        TRUEX is a public betting record verification engine.
+        Records are <strong>append-only</strong>, <strong>lock-time enforced</strong>, and <strong>published deterministically</strong>.
+        No edits. No backfills.
+      </p>
+
+      <div class="pillrow">
+        <span class="pill">Append-only logging</span>
+        <span class="pill">Lock-time enforced</span>
+        <span class="pill">Deterministic publishing</span>
+        <span class="pill">Public artifacts + seal metadata</span>
+      </div>
+
+      <div class="ctaRow">
+        <a class="btn" href="./verified/index.html">View Verified Bettors</a>
+        <a class="btn secondary" href="./onboard.html">Get Verified</a>
+        <a class="btn ghost" href="./about.html">How it Works</a>
+      </div>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <h2>What TRUEX does</h2>
+        <p>
+          TRUEX makes verified performance normal. It is not a social app, not a picks marketplace, and not a feed.
+        </p>
+        <ul>
+          <li><strong>Prevents editing:</strong> bets can be added, not edited or deleted</li>
+          <li><strong>Stops backfills:</strong> late submissions are rejected by lock-time rules</li>
+          <li><strong>Publishes proof:</strong> raw analytics JSON + verification metadata are public</li>
+          <li><strong>Creates shareable profiles:</strong> one link that anyone can verify</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Core principle</strong>
+          If it can be edited, it can’t be trusted.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>See a sample profile</h2>
+        <p class="mini">This is the current sample user profile route (dynamic).</p>
+        <div style="margin-top:10px;">
+          <a class="btn secondary" href="./verified/profile/?u=sampleuser">Open sample profile</a>
+        </div>
+
+        <div class="badgeBox">
+          <div class="badgePreview">TRUEX Verified — sampleuser</div>
+          <div class="mini">Embed badge (example):</div>
+          <div class="code" id="badgeCode">&lt;a href="https://beta.true-x.io/truex-public/verified/profile/?u=sampleuser" target="_blank" style="text-decoration:none;"&gt;
+  &lt;div style="
+    display:inline-block;
+    padding:10px 14px;
+    border:1px solid #000;
+    font-family:Arial,sans-serif;
+    font-size:14px;
+    background:#fff;
+  "&gt;
+    TRUEX Verified — sampleuser
+  &lt;/div&gt;
+&lt;/a&gt;</div>
+          <button class="copyBtn" id="copyBadgeBtn">Copy embed code</button>
+          <div class="mini" id="copyStatus" style="margin-top:8px;"></div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <p class="mini">
+            Want to learn how to interpret records (CLV, drawdowns, samples)?
+            <a href="./education.html">Read Education</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>TRUEX — Public. Deterministic. Immutable.</div>
+      <div>
+        <a href="./verified/index.html">Verified</a> ·
+        <a href="./about.html">About</a> ·
+        <a href="./onboard.html">Get Verified</a> ·
+        <a href="./submit.html">Submit</a> ·
+        <a href="./education.html">Education</a>
+      </div>
     </div>
   </div>
-</header>
 
-<div class="wrap">
+  <script>
+    (function(){
+      var btn = document.getElementById('copyBadgeBtn');
+      var codeEl = document.getElementById('badgeCode');
+      var status = document.getElementById('copyStatus');
 
-  <section class="card">
-    <h2>What TRUEX Verifies</h2>
-    <ul>
-      <li>Append-only bet logs</li>
-      <li>Lock-time enforcement (no post-lock submissions)</li>
-      <li>Frozen snapshots as the only public source of truth</li>
-      <li>Deterministic analytics derived from frozen bets</li>
-      <li>Payload seals (hash changes when any file changes)</li>
-      <li>Strict acceptance tests (fail-fast drift detection)</li>
-    </ul>
-  </section>
+      function setStatus(msg){
+        status.textContent = msg || '';
+      }
 
-  <section class="card">
-    <h2>What TRUEX Refuses To Be</h2>
-    <ul>
-      <li>No pick selling</li>
-      <li>No backfill</li>
-      <li>No post-lock edits</li>
-      <li>No silent adjustments</li>
-    </ul>
-  </section>
-
-  <section class="card">
-    <h2>How To Audit (Public)</h2>
-    <ol>
-      <li>Open the seal: <a href="./latest/payload_seal.json">latest/payload_seal.json</a></li>
-      <li>Inspect artifacts under <code>latest/</code></li>
-      <li>Recompute the payload hash locally if desired</li>
-    </ol>
-  </section>
-
-  <section class="card">
-    <h2>Pages</h2>
-    <ul>
-      <li><a href="./analytics.html">Analytics</a></li>
-    </ul>
-  </section>
-
-  <section class="card">
-    <h2>Proof (Receipts)</h2>
-    <ul>
-      <li><a href="./latest/analytics/summary_receipt.json">analytics receipt</a></li>
-      <li><a href="./latest/badges/badge_receipt.json">badge receipt</a></li>
-      <li><a href="./latest/bets/bet_ingest_receipt.json">bet ingest receipt</a></li>
-    </ul>
-  </section>
-
-</div>
-
+      btn.addEventListener('click', async function(){
+        try{
+          var txt = codeEl.textContent;
+          if (navigator.clipboard && navigator.clipboard.writeText){
+            await navigator.clipboard.writeText(txt);
+            setStatus('Copied.');
+          } else {
+            // Fallback
+            var ta = document.createElement('textarea');
+            ta.value = txt;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            setStatus('Copied.');
+          }
+        } catch (e){
+          setStatus('Copy failed. Select and copy manually.');
+        }
+        setTimeout(function(){ setStatus(''); }, 1800);
+      });
+    })();
+  </script>
 </body>
 </html>
