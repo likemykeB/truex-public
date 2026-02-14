@@ -1,100 +1,51 @@
-function getUsernameFromQuery() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get("u");
-}
-
-function showError(msg) {
-  const box = document.getElementById("error-box");
-  if (!box) return;
-  box.style.display = "block";
-  box.textContent = msg;
-}
-
-// Compute correct relative base depending on where this page lives.
-// - If URL contains "/verified/profile/" (folder route), we need "../../latest/..."
-// - Otherwise ("/verified/profile.html"), we need "../latest/..."
-function latestBasePath() {
-  const path = window.location.pathname;
-  if (path.includes("/verified/profile/")) return "../../latest";
-  return "../latest";
-}
-
-async function fetchAnalytics(username) {
-  const base = latestBasePath();
-  const url = `${base}/analytics/${username}_analytics_latest.json`;
-
-  const res = await fetch(url, { cache: "no-store" });
-  if (!res.ok) {
-    throw new Error(
-      `Failed to fetch analytics JSON\nURL: ${url}\nHTTP: ${res.status} ${res.statusText}`
-    );
-  }
-  return await res.json();
-}
-
-async function loadProfileDynamic() {
-  const username = getUsernameFromQuery();
-
-  if (!username) {
-    showError("No user specified.\nExpected URL format:\n  /verified/profile/?u=<username>");
-    return;
-  }
-
+async function loadSeal() {
   try {
-    const data = await fetchAnalytics(username);
-
-    if (!data || !data.username) {
-      throw new Error("Analytics JSON parsed but missing required fields (username).");
-    }
-
-    document.getElementById("username").innerText = data.username;
-    document.getElementById("verified-since").innerText =
-      "Verified Since: " + (data.verified_since || "");
-
-    document.getElementById("total-units").innerText = data.total_units ?? "";
-    document.getElementById("roi").innerText = data.roi ?? "";
-    document.getElementById("win-rate").innerText = data.win_rate ?? "";
-    document.getElementById("clv").innerText = data.clv ?? "";
-    document.getElementById("max-dd").innerText = data.max_drawdown ?? "";
-
-    document.getElementById("seal").innerText =
-      "PayloadTreeHash: " + (data.payload_tree_hash || "") +
-      " | SealSha256: " + (data.seal_sha256 || "");
-
-    const base = latestBasePath();
-    const payloadLink = document.getElementById("payload-link");
-    payloadLink.href = `${base}/analytics/${encodeURIComponent(username)}_analytics_latest.json`;
-
-    if (Array.isArray(data.equity_curve) && data.equity_curve.length >= 2) {
-      renderLineChart("equityChart", data.equity_curve);
-    }
-
-    if (Array.isArray(data.monthly_pnl) && data.monthly_pnl.length >= 2) {
-      renderLineChart("monthlyChart", data.monthly_pnl);
-    }
-
-    const tbody = document.querySelector("#sport-breakdown tbody");
-    tbody.innerHTML = "";
-
-    if (Array.isArray(data.sport_breakdown)) {
-      data.sport_breakdown.forEach(sport => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${sport.name ?? ""}</td>
-          <td>${sport.units ?? ""}</td>
-          <td>${sport.roi ?? ""}</td>
-          <td>${sport.win_rate ?? ""}</td>
-          <td>${sport.clv ?? ""}</td>
-        `;
-        tbody.appendChild(row);
-      });
-    }
-
-    if (typeof generateBadge === "function") {
-      generateBadge(username);
-    }
+    const res = await fetch("../../latest/payload_seal.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("Seal fetch failed");
+    return await res.json();
   } catch (err) {
-    showError(String(err && err.message ? err.message : err));
-    console.error(err);
+    console.error("Seal load error:", err);
+    return null;
   }
 }
+
+function renderSealBlock(seal) {
+  if (!seal) {
+    return `
+      <div class="seal-block">
+        <h3>Verification Seal</h3>
+        <p style="color:red;"><b>Seal not found.</b></p>
+        <p>This profile cannot be verified because payload_seal.json is missing.</p>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="seal-block" style="margin-top:30px; padding:16px; border:1px solid #000; border-radius:8px;">
+      <h3>Verification Seal</h3>
+      <p><b>Seal Version:</b> ${seal.SealVersion}</p>
+      <p><b>Engine:</b> ${seal.Engine}</p>
+      <p><b>Run Timestamp (UTC):</b> ${seal.RunTsUtc}</p>
+      <p><b>PayloadTreeHash:</b></p>
+      <code style="word-break:break-all;">${seal.PayloadTreeHash}</code>
+      <p style="margin-top:10px;"><b>SealSha256:</b></p>
+      <code style="word-break:break-all;">${seal.SealSha256}</code>
+      <p style="margin-top:10px;"><b>Baseline Commit:</b></p>
+      <code style="word-break:break-all;">${seal.BaselineCommit}</code>
+      <div style="margin-top:14px; font-size:13px; color:#444;">
+        This seal proves that all public artifacts were deterministically generated and hash-locked at publish time.
+        Anyone can independently recompute the PayloadTreeHash from the /latest directory.
+      </div>
+    </div>
+  `;
+}
+
+async function initProfileSeal() {
+  const container = document.getElementById("seal-container");
+  if (!container) return;
+
+  const seal = await loadSeal();
+  container.innerHTML = renderSealBlock(seal);
+}
+
+document.addEventListener("DOMContentLoaded", initProfileSeal);
