@@ -30,9 +30,9 @@
     "stake": 0.0,
     "wins": 0
   },
-  "run_ts_utc": "2026-02-13T20:46:38Z",
+  "run_ts_utc": "2026-02-14T17:53:09Z",
   "source": {
     "bets_frozen": "C:\\TRUEX\\deploy\\public_site_latest\\latest\\bets\\bets_frozen_v2.json"
   },
-  "window_anchor_ts_utc": "2026-02-13T20:46:38Z"
+  "window_anchor_ts_utc": "2026-02-14T17:53:09Z"
 }
