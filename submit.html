@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TRUEX Submission Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="./assets/styles.css" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+
+    code {
+      background: #f4f4f4;
+      padding: 4px 6px;
+      font-size: 14px;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      overflow-x: auto;
+    }
+
+    .important {
+      background: #fff8e1;
+      padding: 12px;
+      border-left: 4px solid #ffc107;
+      margin: 20px 0;
+    }
+
+    .warning {
+      background: #fdecea;
+      padding: 12px;
+      border-left: 4px solid #d32f2f;
+      margin: 20px 0;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Submit to TRUEX</h1>
+
+  <p>
+    TRUEX verifies betting records using an append-only, lock-time enforced system.
+    All submissions become public, immutable, and independently verifiable.
+  </p>
+
+  <div class="important">
+    TRUEX is not a picks marketplace.
+    It is a record verification engine.
+  </div>
+
+  <h2>1. Submission Format</h2>
+
+  <p>
+    Bets must be submitted in CSV format with the following required fields:
+  </p>
+
+  <pre>
+username,sport,event,market,selection,odds,stake,timestamp_utc
+  </pre>
+
+  <p>
+    Example:
+  </p>
+
+  <pre>
+sampleuser,NFL,SEA vs NE,Spread,NE -5,-110,1.0,2025-10-01T17:05:00Z
+  </pre>
+
+  <h2>2. Lock-Time Rules</h2>
+
+  <p>
+    All bets must be submitted before the official event start time.
+  </p>
+
+  <div class="warning">
+    Late submissions are automatically rejected.
+    TRUEX does not allow backfilling or editing past events.
+  </div>
+
+  <p>
+    Once accepted, bets are permanently frozen.
+  </p>
+
+  <h2>3. Grading Process</h2>
+
+  <p>
+    Results are graded deterministically using official market outcomes.
+  </p>
+
+  <ul>
+    <li>No manual overrides</li>
+    <li>No retroactive corrections</li>
+    <li>No deletion of losing bets</li>
+  </ul>
+
+  <h2>4. What Becomes Public</h2>
+
+  <p>
+    The following information is published on your verified profile:
+  </p>
+
+  <ul>
+    <li>Total Units</li>
+    <li>ROI</li>
+    <li>Win Rate</li>
+    <li>CLV (if available)</li>
+    <li>Max Drawdown</li>
+    <li>Equity curve</li>
+    <li>Sport breakdown</li>
+    <li>PayloadTreeHash</li>
+    <li>SealSha256</li>
+  </ul>
+
+  <h2>5. Rejection Conditions</h2>
+
+  <ul>
+    <li>Missing required fields</li>
+    <li>Invalid timestamp format</li>
+    <li>Post-lock submissions</li>
+    <li>Malformed CSV</li>
+    <li>Duplicate entries</li>
+  </ul>
+
+  <h2>6. How to Submit</h2>
+
+  <p>
+    Email your CSV file to:
+  </p>
+
+  <p>
+    <strong>submissions@true-x.io</strong>
+  </p>
+
+  <p>
+    Submissions are processed in scheduled verification cycles.
+    Approved bettors receive a public verified profile link.
+  </p>
+
+  <h2>7. Philosophy</h2>
+
+  <p>
+    TRUEX exists to separate verified performance from unverifiable claims.
+  </p>
+
+  <p>
+    If you want to prove your record publicly and permanently,
+    this is the system.
+  </p>
+
+  <footer>
+    TRUEX — Public. Deterministic. Immutable.
+  </footer>
+
+</body>
+</html>
