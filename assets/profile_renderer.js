@@ -10,14 +10,25 @@ function showError(msg) {
   box.textContent = msg;
 }
 
+// Compute correct relative base depending on where this page lives.
+// - If URL contains "/verified/profile/" (folder route), we need "../../latest/..."
+// - Otherwise ("/verified/profile.html"), we need "../latest/..."
+function latestBasePath() {
+  const path = window.location.pathname;
+  if (path.includes("/verified/profile/")) return "../../latest";
+  return "../latest";
+}
+
 async function fetchAnalytics(username) {
-  const url = `../latest/analytics/${username}_analytics_latest.json`;
+  const base = latestBasePath();
+  const url = `${base}/analytics/${username}_analytics_latest.json`;
+
   const res = await fetch(url, { cache: "no-store" });
-
   if (!res.ok) {
-    throw new Error(`Failed to fetch analytics JSON\nURL: ${url}\nHTTP: ${res.status} ${res.statusText}`);
+    throw new Error(
+      `Failed to fetch analytics JSON\nURL: ${url}\nHTTP: ${res.status} ${res.statusText}`
+    );
   }
-
   return await res.json();
 }
 
@@ -25,38 +36,35 @@ async function loadProfileDynamic() {
   const username = getUsernameFromQuery();
 
   if (!username) {
-    showError("No user specified.\nExpected URL format:\n  /verified/profile.html?u=<username>");
+    showError("No user specified.\nExpected URL format:\n  /verified/profile/?u=<username>");
     return;
   }
 
   try {
     const data = await fetchAnalytics(username);
 
-    // Basic sanity
     if (!data || !data.username) {
       throw new Error("Analytics JSON parsed but missing required fields (username).");
     }
 
-    // Header
     document.getElementById("username").innerText = data.username;
-    document.getElementById("verified-since").innerText = "Verified Since: " + (data.verified_since || "");
+    document.getElementById("verified-since").innerText =
+      "Verified Since: " + (data.verified_since || "");
 
-    // Overall
     document.getElementById("total-units").innerText = data.total_units ?? "";
     document.getElementById("roi").innerText = data.roi ?? "";
     document.getElementById("win-rate").innerText = data.win_rate ?? "";
     document.getElementById("clv").innerText = data.clv ?? "";
     document.getElementById("max-dd").innerText = data.max_drawdown ?? "";
 
-    // Verification
     document.getElementById("seal").innerText =
       "PayloadTreeHash: " + (data.payload_tree_hash || "") +
       " | SealSha256: " + (data.seal_sha256 || "");
 
+    const base = latestBasePath();
     const payloadLink = document.getElementById("payload-link");
-    payloadLink.href = `../latest/analytics/${encodeURIComponent(username)}_analytics_latest.json`;
+    payloadLink.href = `${base}/analytics/${encodeURIComponent(username)}_analytics_latest.json`;
 
-    // Charts
     if (Array.isArray(data.equity_curve) && data.equity_curve.length >= 2) {
       renderLineChart("equityChart", data.equity_curve);
     }
@@ -65,7 +73,6 @@ async function loadProfileDynamic() {
       renderLineChart("monthlyChart", data.monthly_pnl);
     }
 
-    // Sport breakdown
     const tbody = document.querySelector("#sport-breakdown tbody");
     tbody.innerHTML = "";
 
@@ -83,7 +90,6 @@ async function loadProfileDynamic() {
       });
     }
 
-    // Badge (only if badge.js is present)
     if (typeof generateBadge === "function") {
       generateBadge(username);
     }
